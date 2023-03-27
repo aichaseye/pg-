@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="etablissement">
+      <h2 data-cy="etablissementDetailsHeading"><span>Etablissement</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ etablissement.id }}</span>
+        </dd>
+        <dt><span>Matricule Etab</span></dt>
+        <dd>
+          <span>{{ etablissement.matriculeEtab }}</span>
+        </dd>
+        <dt><span>Region</span></dt>
+        <dd>
+          <span>{{ etablissement.region }}</span>
+        </dd>
+        <dt><span>Departement</span></dt>
+        <dd>
+          <span>{{ etablissement.departement }}</span>
+        </dd>
+        <dt><span>Autre Region</span></dt>
+        <dd>
+          <span>{{ etablissement.autreRegion }}</span>
+        </dd>
+        <dt><span>Autre Dep</span></dt>
+        <dd>
+          <span>{{ etablissement.autreDep }}</span>
+        </dd>
+        <dt><span>Nom Etab</span></dt>
+        <dd>
+          <span>{{ etablissement.nomEtab }}</span>
+        </dd>
+        <dt><span>Code IA</span></dt>
+        <dd>
+          <span>{{ etablissement.codeIA }}</span>
+        </dd>
+        <dt><span>Autre Code IA</span></dt>
+        <dd>
+          <span>{{ etablissement.autreCodeIA }}</span>
+        </dd>
+        <dt><span>Autre Nome Etab</span></dt>
+        <dd>
+          <span>{{ etablissement.autreNomeEtab }}</span>
+        </dd>
+        <dt><span>Type Etab</span></dt>
+        <dd>
+          <span>{{ etablissement.typeEtab }}</span>
+        </dd>
+        <dt><span>Annee Creation</span></dt>
+        <dd>
+          <span>{{ etablissement.anneeCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Statut</span></dt>
+        <dd>
+          <span>{{ etablissement.statut }}</span>
+        </dd>
+        <dt><span>Email Etab</span></dt>
+        <dd>
+          <span>{{ etablissement.emailEtab }}</span>
+        </dd>
+        <dt><span>Type Insp</span></dt>
+        <dd>
+          <span>{{ etablissement.typeInsp }}</span>
+        </dd>
+        <dt><span>B FPA</span></dt>
+        <dd>
+          <div *ngIf="etablissement.bFPA">
+            <a [routerLink]="['/bfpa', etablissement.bFPA?.id, 'view']">{{ etablissement.bFPA?.nomPrenom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/etablissement', etablissement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

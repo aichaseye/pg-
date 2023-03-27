@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="matiere">
+      <h2 data-cy="matiereDetailsHeading"><span>Matiere</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ matiere.id }}</span>
+        </dd>
+        <dt><span>Matricule Matiere</span></dt>
+        <dd>
+          <span>{{ matiere.matriculeMatiere }}</span>
+        </dd>
+        <dt><span>Nom Matiere</span></dt>
+        <dd>
+          <span>{{ matiere.nomMatiere }}</span>
+        </dd>
+        <dt><span>Reference</span></dt>
+        <dd>
+          <span>{{ matiere.reference }}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+          <div *ngIf="matiere.image">
+            <a (click)="openFile(matiere.image, matiere.imageContentType)">open</a>
+            {{ matiere.imageContentType }}, {{ byteSize(matiere.image) }}
+          </div>
+        </dd>
+        <dt><span>Region</span></dt>
+        <dd>
+          <span>{{ matiere.region }}</span>
+        </dd>
+        <dt><span>Autre Region</span></dt>
+        <dd>
+          <span>{{ matiere.autreRegion }}</span>
+        </dd>
+        <dt><span>Departement</span></dt>
+        <dd>
+          <span>{{ matiere.departement }}</span>
+        </dd>
+        <dt><span>Autre Dep</span></dt>
+        <dd>
+          <span>{{ matiere.autreDep }}</span>
+        </dd>
+        <dt><span>Code IA</span></dt>
+        <dd>
+          <span>{{ matiere.codeIA }}</span>
+        </dd>
+        <dt><span>Autre Code IA</span></dt>
+        <dd>
+          <span>{{ matiere.autreCodeIA }}</span>
+        </dd>
+        <dt><span>Type Structure</span></dt>
+        <dd>
+          <span>{{ matiere.typeStructure }}</span>
+        </dd>
+        <dt><span>Autre Structure</span></dt>
+        <dd>
+          <span>{{ matiere.autreStructure }}</span>
+        </dd>
+        <dt><span>Annee Affectation</span></dt>
+        <dd>
+          <span>{{ matiere.anneeAffectation }}</span>
+        </dd>
+        <dt><span>Referant</span></dt>
+        <dd>
+          <div *ngIf="matiere.referant">
+            <a [routerLink]="['/referant', matiere.referant?.id, 'view']">{{ matiere.referant?.nomPrenom }}</a>
+          </div>
+        </dd>
+        <dt><span>Comptable Matiere</span></dt>
+        <dd>
+          <div *ngIf="matiere.comptableMatiere">
+            <a [routerLink]="['/comptable-matiere', matiere.comptableMatiere?.id, 'view']">{{ matiere.comptableMatiere?.nomPrenom }}</a>
+          </div>
+        </dd>
+        <dt><span>Etablissement</span></dt>
+        <dd>
+          <div *ngIf="matiere.etablissement">
+            <a [routerLink]="['/etablissement', matiere.etablissement?.id, 'view']">{{ matiere.etablissement?.nomEtab }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/matiere', matiere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

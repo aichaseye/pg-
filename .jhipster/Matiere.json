@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20230319213526",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "matiere",
+  "fields": [
+    {
+      "fieldName": "matriculeMatiere",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "nomMatiere",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "region",
+      "fieldType": "NomReg",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DAKAR,DIOURBEL,FATICK,KAFFRINE,KAOLACK,KEDOUGOU,KOLDA,LOUGA,MATAM,SAINT_LOUIS,SEDHIOU,TAMBACOUNDA,THIES,ZIGINCHOR,AUTRE"
+    },
+    {
+      "fieldName": "autreRegion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "departement",
+      "fieldType": "NomDep",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Dakar,Pikine,Rufisque,Guediawaye,Keur_Massar,Thies,Mbour,Tivaoune,Saint_Louis,Dagana,Podor,Diourbel,Mbacke,Bambey,Louga,Linguere,Kebemer,Fatick,Foundiougne,Gossas,Kaffrine,Birkelane,Koungheul,Malem_Hodar,Kaolack,Guinguineo,Nioro_du_Rip,Matam,Kanel,Ranerou,Tambacounda,Bakel,Goudiry,Koumpentoum,Kedougou,Salemata,Saraya,Kolda,Velingara,Medina_Yoro_Foulah,Sedhiou,Bounkiling,Goudomp,Ziguinchor,Bignona,Oussouye,Autre"
+    },
+    {
+      "fieldName": "autreDep",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeIA",
+      "fieldType": "CodeIA",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "C01,C02,C03,C04,C05,C06,C07,C08,C09,C10,C11,C12,C13,C14,C15,C16,C17,Autres"
+    },
+    {
+      "fieldName": "autreCodeIA",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeStructure",
+      "fieldType": "TypeStructure",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "LT,CS,CFP,CI,DA,DAGE,DI,CJ,CG,SNOP,CNID,DECPC,CPM,II,BCC,BCOM,DFPT,DRH,BC,CEP,BAD,Autre"
+    },
+    {
+      "fieldName": "autreStructure",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "anneeAffectation",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Matiere",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nomPrenom",
+      "otherEntityName": "referant",
+      "otherEntityRelationshipName": "matiere",
+      "relationshipName": "referant",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomPrenom",
+      "otherEntityName": "comptableMatiere",
+      "otherEntityRelationshipName": "matiere",
+      "relationshipName": "comptableMatiere",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nomEtab",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "matiere",
+      "relationshipName": "etablissement",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

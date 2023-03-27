@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Matiere.
+    -->
+    <changeSet id="20230319213526-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="referant_id"
+                                 baseTableName="matiere"
+                                 constraintName="fk_matiere__referant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="referant"/>
+
+        <addForeignKeyConstraint baseColumnNames="comptable_matiere_id"
+                                 baseTableName="matiere"
+                                 constraintName="fk_matiere__comptable_matiere_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comptable_matiere"/>
+
+        <addForeignKeyConstraint baseColumnNames="etablissement_id"
+                                 baseTableName="matiere"
+                                 constraintName="fk_matiere__etablissement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etablissement"/>
+    </changeSet>
+</databaseChangeLog>

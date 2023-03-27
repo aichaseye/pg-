@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="comptableMatiere">
+      <h2 data-cy="comptableMatiereDetailsHeading"><span>Comptable Matiere</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ comptableMatiere.id }}</span>
+        </dd>
+        <dt><span>Nom Prenom</span></dt>
+        <dd>
+          <span>{{ comptableMatiere.nomPrenom }}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ comptableMatiere.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/comptable-matiere', comptableMatiere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

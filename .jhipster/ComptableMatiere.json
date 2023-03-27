@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230319213528",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "comptable_matiere",
+  "fields": [
+    {
+      "fieldName": "nomPrenom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ComptableMatiere",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "comptableMatiere",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "matiere",
+      "otherEntityRelationshipName": "comptableMatiere",
+      "relationshipName": "matiere",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

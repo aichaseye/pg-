@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230319213527",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "chef_etablissement",
+  "fields": [
+    {
+      "fieldName": "nomPrenom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ChefEtablissement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "chefEtablissement",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "apprenant",
+      "otherEntityRelationshipName": "chefEtablissement",
+      "relationshipName": "apprenant",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

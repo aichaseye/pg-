@@ -1,0 +1,68 @@
+{
+  "applications": "*",
+  "changelogDate": "20230319213524",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "apprenant",
+  "fields": [
+    {
+      "fieldName": "matriculeApp",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "M,F"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Apprenant",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "demande",
+      "otherEntityRelationshipName": "apprenant",
+      "relationshipName": "demande",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "nomPrenom",
+      "otherEntityName": "chefEtablissement",
+      "otherEntityRelationshipName": "apprenant",
+      "relationshipName": "chefEtablissement",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "typeEtab",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "apprenant",
+      "relationshipName": "etablissement",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

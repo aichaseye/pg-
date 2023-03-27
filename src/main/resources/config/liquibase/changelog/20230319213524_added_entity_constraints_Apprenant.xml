@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Apprenant.
+    -->
+    <changeSet id="20230319213524-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="chef_etablissement_id"
+                                 baseTableName="apprenant"
+                                 constraintName="fk_apprenant__chef_etablissement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="chef_etablissement"/>
+
+        <addForeignKeyConstraint baseColumnNames="etablissement_id"
+                                 baseTableName="apprenant"
+                                 constraintName="fk_apprenant__etablissement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etablissement"/>
+    </changeSet>
+</databaseChangeLog>

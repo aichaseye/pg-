@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="demande">
+      <h2 data-cy="demandeDetailsHeading"><span>Demande</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ demande.id }}</span>
+        </dd>
+        <dt><span>Motif</span></dt>
+        <dd>
+          <span>{{ demande.motif }}</span>
+        </dd>
+        <dt><span>Type Demandeur</span></dt>
+        <dd>
+          <span>{{ demande.typeDemandeur }}</span>
+        </dd>
+        <dt><span>Nom</span></dt>
+        <dd>
+          <span>{{ demande.nom }}</span>
+        </dd>
+        <dt><span>Prenom</span></dt>
+        <dd>
+          <span>{{ demande.prenom }}</span>
+        </dd>
+        <dt><span>Nom Etab</span></dt>
+        <dd>
+          <span>{{ demande.nomEtab }}</span>
+        </dd>
+        <dt><span>Autre Nom Etab</span></dt>
+        <dd>
+          <span>{{ demande.autreNomEtab }}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+          <span>{{ demande.email }}</span>
+        </dd>
+        <dt><span>Enseignant</span></dt>
+        <dd>
+          <div *ngIf="demande.enseignant">
+            <a [routerLink]="['/enseignant', demande.enseignant?.id, 'view']">{{ demande.enseignant?.numCNI }}</a>
+          </div>
+        </dd>
+        <dt><span>Apprenant</span></dt>
+        <dd>
+          <div *ngIf="demande.apprenant">
+            <a [routerLink]="['/apprenant', demande.apprenant?.id, 'view']">{{ demande.apprenant?.telephone }}</a>
+          </div>
+        </dd>
+        <dt><span>Etablissement</span></dt>
+        <dd>
+          <div *ngIf="demande.etablissement">
+            <a [routerLink]="['/etablissement', demande.etablissement?.id, 'view']">{{ demande.etablissement?.nomEtab }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/demande', demande.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

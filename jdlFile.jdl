@@ -1,0 +1,224 @@
+// an ignored comment
+/** not an ignored comment */
+
+entity Etablissement {
+	  matriculeEtab String unique,
+      region NomReg required,
+      departement NomDep required ,
+      autreRegion String,
+      autreDep String,
+      nomEtab NomEtab unique,
+      codeIA CodeIA required ,
+      autreCodeIA String,
+      autreNomeEtab String unique,
+      typeEtab TypeEtab required,
+      anneeCreation LocalDate required,
+	  statut StatutEtab required,
+      emailEtab String unique required,
+      typeInsp TypeInspection   
+}
+enum NomEtab {
+	CEDT_G15, CFP_OUAKAM, CNQP, CFPC_DELAFOSSE, 
+    CFPJ_YMCA, CFPT_SJ, CNCPI, CFP_MEDINA_GUEULE_TAPEE
+    CFP_DAKAR, ICCM, CFA, CFA, CFP_PIKINE, CFP_THIAROYE
+    CFP_RUFISQUE, CFP_BARGNY, CFP_SEBIKHOTANE, CFP_NIAGA	
+ 	LTID_DAKAR, LTCD_DAKAR, LSLL_DAKAR
+  
+    
+ 	CEP_THIES, CFP_FISSEL, CFP_TIVAOUANE, CFP_JOAL, CFP_MONT_ROLLAND	
+    CFP_NDIAGANIAO, CFP_THIADIAYE, CNAFP_THIES, CAP_ENFEFS_THIES, CFP_MBOUR	
+    CFP_NGUEKHOKH, CFP_KHOMBOLE, CFP_TAIBA_NDIAYE, CFP_LALANE
+    LETFP_THIES
+    
+	CFP_LOUGA, CFP_KEBEMER, CFP_LINGUERE, CFP_LOUGA, CFP_NGOURANE, CFP_DAHRA	
+	
+    CFP_SAINT_LOUIS, CRFP_SAINT_LOUIS, CDFP_RICHARD_TOLL, CFP_DAGANA, CFP_PODOR, CDFP_PODOR, CFP_AERE_LAO	
+	LTAP_SAINT_LOUIS
+    
+    CFP_MATAM , CFP_OUROSSOGUI, CFP_WAOUNDE, CFP_KANEL, 
+    CFP_RANEROU, SINTHIOU_BAMBAMBE, AGNAM_CIVOL, THIOUBALEL, MBOUMBA	
+	
+    CFP_DIOURBEL, CFP_BAMBEY, CFP_MBACKE, CFP_TAIF,  CDFP_MBACKE, CFP_NDOULO, CFP_TOUBA	
+
+	CFP_FATICK, CFP_DIOFIOR, CFP_DIONEWAR, CFP_DJILOR_SALOUM, CFP_FAOYE, CFP_FOUNDIOUGNE	
+	CFP_LOUL_SESSENE, CFP_NIAKHAR, CFP_GOSSAS, CFP_TOUCAR, CFP_SOKONE, CFP_DIAKHAO	
+    LT_FATICK
+    
+     CFP_KAOLACK, CFP_MBADAKHOUNE, CFP_GUINGUINEO, CFP_NIORO, CFP_POROKHANE	
+	 LCAN_KAOLACK
+     
+	 CFP_BAKEL2, CFP_FORAMECA, CFP_KIDIRA, CFP_VELINGARA, CFP_TAMBA, CFP_BAKEL1, MEDINA_GOUNASS	, CFP_GOUDIRY
+     LT_TAMBA,
+	
+    CFP_KEDOUGOU, CFP_SALEMATA, LTIMK_KEDOUGOU	
+
+	CFP_KOLDA, CFP_DABO, CFP_KOUNKANE, CFP_MEDINA_YORO_FOULAH, CFP_SARE_YOBA, CRFP_KOLDA, CFP_VELINGARA	
+	LT_KOLDA
+    
+	CFP_SEDHIOU, CPAR_SEDHIOU, CENTRE_REFERENCE_SEDHIOU, CENTRE_REFERENCE_BOUNKILING	
+
+	CRFP_ZIGUINCHOR, CFP_ABENE, CFP_BAILA, CFP_SAINT_MARC ALBADAR, CFP_SINDIAN, CFP_TENDOUCK	
+	CFP_BIGNONA, CFP_COUBANAO, CFP_ZIGUINCHOR, CFP_FANDA, CFP_OUSSOUYE	
+	LTAEB_BIGNONA
+    
+	CFP_KAFFRINE, CFP_BIRKELANE 
+    AUTRE
+    
+}
+
+enum TypeEtab {
+	
+    LyceeTechnique, CFP 
+}
+
+enum NomReg {
+DAKAR, DIOURBEL, FATICK, KAFFRINE, KAOLACK, KEDOUGOU, KOLDA,
+LOUGA, MATAM, SAINT_LOUIS, SEDHIOU, TAMBACOUNDA, THIES, 
+ZIGINCHOR, AUTRE
+}
+ enum CodeIA {
+ C01, C02, C03, C04, C05, C06, C07, C08, C09, C10,
+ C11, C12, C13, C14, C15, C16, C17,  Autres
+ }
+ enum NomDep{
+Dakar, Pikine, Rufisque, Guediawaye, Keur_Massar,
+Thies, Mbour, Tivaoune,
+Saint_Louis, Dagana, Podor,
+Diourbel, Mbacke, Bambey,
+Louga, Linguere, Kebemer,
+Fatick, Foundiougne, Gossas,
+Kaffrine, Birkelane, Koungheul, Malem_Hodar,
+Kaolack, Guinguineo, Nioro_du_Rip,
+Matam, Kanel, Ranerou,
+Tambacounda, Bakel, Goudiry, Koumpentoum,
+Kedougou, Salemata, Saraya,
+Kolda, Velingara, Medina_Yoro_Foulah,
+Sedhiou, Bounkiling, Goudomp,
+Ziguinchor, Bignona, Oussouye, Autre
+}
+
+
+enum StatutEtab {
+	Prive, Public , Mixte 
+}
+enum TypeInspection {
+	IA, IEF  
+}
+entity Enseignant {
+matriculeEns String unique,
+nom  String required,
+prenom String required,
+numCNI Long  unique required,
+anneeDentree Integer  required,
+region NomReg  required,
+departement NomDep required ,
+autreDep String,
+autreRegion String,
+codeIA CodeIA required,
+autreCodeIA String,
+sexe Sexe ,
+email String required unique
+}
+entity Apprenant {
+	matriculeApp String unique,
+	nom String  required,
+    prenom String  required,
+    sexe Sexe required ,
+    telephone String required ,
+	email String required  unique     
+}
+
+enum Sexe {
+	M, F  
+}
+
+entity Demande {
+      motif Motif required,
+	  typeDemandeur TypeDemandeur required,
+	  nom String required,
+	  prenom String required, 
+      nomEtab NomEtab,
+      autreNomEtab String,
+	  email String unique required    
+}
+
+enum Motif {
+CreationMatricule, MatriculeOublier
+}
+
+enum TypeDemandeur {
+  Etablissement, Enseignant, Apprenant
+ }
+ 
+entity Matiere {
+matriculeMatiere String unique,
+nomMatiere String ,
+reference String ,
+image AnyBlob,
+region NomReg required ,
+autreRegion String,
+departement NomDep required ,
+autreDep String,
+codeIA CodeIA required ,
+autreCodeIA String,
+typeStructure  TypeStructure required,
+autreStructure String,
+anneeAffectation Integer required,
+	
+}
+
+ enum TypeStructure {
+ LT, CS, CFP, CI, DA, DAGE, DI, CJ, CG, SNOP, 
+ CNID, DECPC, CPM, II, BCC, BCOM, DFPT, DRH, BC, CEP, BAD, Autre
+ }
+  
+entity ChefEtablissement {
+    nomPrenom String required
+    
+}
+
+entity ComptableMatiere {
+    nomPrenom String required
+  
+}
+entity Referant {
+    nomPrenom String required
+  
+}
+
+entity BFPA {
+    nomPrenom String required
+}
+entity File{
+file AnyBlob
+}
+relationship OneToOne {
+    ChefEtablissement{User(login)} to User 
+    ComptableMatiere{User(login)} to User
+    BFPA{User(login)} to User
+    Referant{User(login)} to User
+}
+
+relationship OneToMany {
+    ChefEtablissement to Apprenant{ChefEtablissement(nomPrenom)}
+    BFPA to Etablissement{BFPA(nomPrenom)}
+    BFPA to Enseignant{BFPA(nomPrenom)}
+    Referant to Matiere{Referant(nomPrenom)}
+    ComptableMatiere to Matiere{ComptableMatiere(nomPrenom)}
+    Etablissement to Apprenant{Etablissement(typeEtab)}
+    Etablissement to Enseignant{Etablissement(nomEtab)}
+    Etablissement to Matiere{Etablissement(nomEtab)}
+    Enseignant to Demande{Enseignant(numCNI)}
+    Apprenant to Demande{Apprenant(telephone)}
+    Etablissement to Demande{Etablissement(nomEtab)}
+    
+    }
+// Set pagination options
+paginate * with pagination
+//paginate Job with pagination
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+// angularSuffix * with mySuffix

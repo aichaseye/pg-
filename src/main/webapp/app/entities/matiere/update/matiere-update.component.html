@@ -1,0 +1,272 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-matiere-heading" data-cy="MatiereCreateUpdateHeading">Create or edit a Matiere</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_matriculeMatiere">Matricule Matiere</label>
+          <input
+            type="text"
+            class="form-control"
+            name="matriculeMatiere"
+            id="field_matriculeMatiere"
+            data-cy="matriculeMatiere"
+            formControlName="matriculeMatiere"
+          />
+          <div
+            *ngIf="
+              editForm.get('matriculeMatiere')!.invalid &&
+              (editForm.get('matriculeMatiere')!.dirty || editForm.get('matriculeMatiere')!.touched)
+            "
+          ></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nomMatiere">Nom Matiere</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomMatiere"
+            id="field_nomMatiere"
+            data-cy="nomMatiere"
+            formControlName="nomMatiere"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_reference">Reference</label>
+          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_image">Image</label>
+          <div>
+            <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+              <a class="pull-start" (click)="openFile(editForm.get('image')!.value, editForm.get('imageContentType')!.value)">open</a><br />
+              <span class="pull-start">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image: null }); editForm.patchValue({ imageContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_image" data-cy="image" (change)="setFileData($event, 'image', false)" />
+          </div>
+          <input type="hidden" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imageContentType"
+            id="field_imageContentType"
+            formControlName="imageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_region">Region</label>
+          <select class="form-control" name="region" formControlName="region" id="field_region" data-cy="region">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let nomReg of nomRegValues" [value]="nomReg">nomReg</option>
+          </select>
+          <div *ngIf="editForm.get('region')!.invalid && (editForm.get('region')!.dirty || editForm.get('region')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autreRegion">Autre Region</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autreRegion"
+            id="field_autreRegion"
+            data-cy="autreRegion"
+            formControlName="autreRegion"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_departement">Departement</label>
+          <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let nomDep of nomDepValues" [value]="nomDep">nomDep</option>
+          </select>
+          <div *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autreDep">Autre Dep</label>
+          <input type="text" class="form-control" name="autreDep" id="field_autreDep" data-cy="autreDep" formControlName="autreDep" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_codeIA">Code IA</label>
+          <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let codeIA of codeIAValues" [value]="codeIA">codeIA</option>
+          </select>
+          <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autreCodeIA"
+            id="field_autreCodeIA"
+            data-cy="autreCodeIA"
+            formControlName="autreCodeIA"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_typeStructure">Type Structure</label>
+          <select
+            class="form-control"
+            name="typeStructure"
+            formControlName="typeStructure"
+            id="field_typeStructure"
+            data-cy="typeStructure"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let typeStructure of typeStructureValues" [value]="typeStructure">typeStructure</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('typeStructure')!.invalid && (editForm.get('typeStructure')!.dirty || editForm.get('typeStructure')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('typeStructure')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autreStructure">Autre Structure</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autreStructure"
+            id="field_autreStructure"
+            data-cy="autreStructure"
+            formControlName="autreStructure"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_anneeAffectation">Annee Affectation</label>
+          <input
+            type="number"
+            class="form-control"
+            name="anneeAffectation"
+            id="field_anneeAffectation"
+            data-cy="anneeAffectation"
+            formControlName="anneeAffectation"
+          />
+          <div
+            *ngIf="
+              editForm.get('anneeAffectation')!.invalid &&
+              (editForm.get('anneeAffectation')!.dirty || editForm.get('anneeAffectation')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('anneeAffectation')?.errors?.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('anneeAffectation')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_referant">Referant</label>
+          <select class="form-control" id="field_referant" data-cy="referant" name="referant" formControlName="referant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="referantOption.id === editForm.get('referant')!.value?.id ? editForm.get('referant')!.value : referantOption"
+              *ngFor="let referantOption of referantsSharedCollection; trackBy: trackReferantById"
+            >
+              {{ referantOption.nomPrenom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_comptableMatiere">Comptable Matiere</label>
+          <select
+            class="form-control"
+            id="field_comptableMatiere"
+            data-cy="comptableMatiere"
+            name="comptableMatiere"
+            formControlName="comptableMatiere"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                comptableMatiereOption.id === editForm.get('comptableMatiere')!.value?.id
+                  ? editForm.get('comptableMatiere')!.value
+                  : comptableMatiereOption
+              "
+              *ngFor="let comptableMatiereOption of comptableMatieresSharedCollection; trackBy: trackComptableMatiereById"
+            >
+              {{ comptableMatiereOption.nomPrenom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_etablissement">Etablissement</label>
+          <select
+            class="form-control"
+            id="field_etablissement"
+            data-cy="etablissement"
+            name="etablissement"
+            formControlName="etablissement"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                etablissementOption.id === editForm.get('etablissement')!.value?.id
+                  ? editForm.get('etablissement')!.value
+                  : etablissementOption
+              "
+              *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
+            >
+              {{ etablissementOption.nomEtab }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
