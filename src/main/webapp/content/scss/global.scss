@@ -66,6 +66,48 @@ Generic styles
 .ng-invalid:not(form) {
   border-left: 5px solid red;
 }
+//foother
+.footer {
+  background-color: blue;
+  // padding: 1.5%;
+  // border: none;
+  background-size: cover;
+  width: 102%;
+  height: 58vh;
+  position: relative;
+  right: 14px;
+}
+
+.log {
+  color: rgb(255, 254, 254);
+}
+.loge {
+  color: rgb(255, 254, 254);
+}
+
+.cont {
+  color: rgb(253, 253, 253);
+  font-size: 15px;
+}
+
+.copy {
+  color: hsl(0, 0%, 100%);
+  font-size: 20px;
+  bottom: 40;
+}
+.anta {
+  background-image: url('../images/drapeau1.png');
+  width: 30vh;
+  height: 20vh;
+  background-size: cover;
+  // display: inline-block;
+  // margin-left: 5px;
+  display: block;
+  // margin-left: auto;
+  // margin-right: auto;
+  right: 50px;
+  margin-top: 20%;
+}
 
 /* other generic styles */
 

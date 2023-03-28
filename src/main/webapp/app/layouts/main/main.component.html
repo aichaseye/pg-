@@ -1,13 +1,31 @@
-<jhi-page-ribbon></jhi-page-ribbon>
+<!-- <jhi-page-ribbon></jhi-page-ribbon> -->
+<div class="tout">
+  <br />
+  <div class="dedans">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-4">
+        <div class="drapeau"></div>
+        <p class="divise">un peuple-un but-une foi</p>
+      </div>
+      <div class="col-md-7 mt-4">
+        <p class="cigle" style="text-align: center">
+          Ministère de la Formation Professionnelle, <br />de l'Apprentissage et de l'Insertion
+        </p>
+      </div>
+      <!-- <img src="../../../content/images/entete.PNG" height="130vh" width="1498vh"> -->
+      <div>
+        <router-outlet name="navbar"></router-outlet>
+      </div>
+      <div class="container-fluid">
+        <div class="card jh-card">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
 
-<div>
-  <router-outlet name="navbar"></router-outlet>
-</div>
-
-<div class="container-fluid">
-  <div class="card jh-card">
-    <router-outlet></router-outlet>
+      <div>
+        <jhi-footer class="foother"></jhi-footer>
+      </div>
+    </div>
   </div>
-
-  <jhi-footer></jhi-footer>
 </div>
