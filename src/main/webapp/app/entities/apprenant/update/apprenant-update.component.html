@@ -11,7 +11,7 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3" [hidden]="editForm.get('matriculeApp')!.value == null">
           <label class="form-label" for="field_matriculeApp">Matricule App</label>
           <input
             type="text"
@@ -20,6 +20,7 @@
             id="field_matriculeApp"
             data-cy="matriculeApp"
             formControlName="matriculeApp"
+            [readonly]="true"
           />
           <div
             *ngIf="editForm.get('matriculeApp')!.invalid && (editForm.get('matriculeApp')!.dirty || editForm.get('matriculeApp')!.touched)"
@@ -46,7 +47,7 @@
           <label class="form-label" for="field_sexe">Sexe</label>
           <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
             <option [ngValue]="null"></option>
-            <option *ngFor="let sexe of sexeValues" [value]="sexe">sexe</option>
+            <option *ngFor="let sexe of sexeValues" [value]="sexe">{{ sexe }}</option>
           </select>
           <div *ngIf="editForm.get('sexe')!.invalid && (editForm.get('sexe')!.dirty || editForm.get('sexe')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('sexe')?.errors?.required"> This field is required. </small>
@@ -115,7 +116,7 @@
           </select>
         </div>
       </div>
-
+      <!--  -->
       <div>
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>

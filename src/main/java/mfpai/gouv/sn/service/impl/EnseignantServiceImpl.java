@@ -40,19 +40,17 @@ public class EnseignantServiceImpl implements EnseignantService {
 
         String order = getOrder(String.valueOf(last_insert));
 
-        
         String matricule = String.valueOf(enseignant.getAnneeDentree()).substring(2);
-        String codeIA="";
-        if(enseignant.getCodeIA()==CodeIA.Autres){
-            codeIA= enseignant.getAutreCodeIA().substring(1,3);
+        String codeIA = "";
+        if (enseignant.getCodeIA() == CodeIA.Autres) {
+            codeIA = enseignant.getAutreCodeIA().substring(1, 3);
+        } else if (enseignant.getCodeIA() == CodeIA.Autres && enseignant.getAutreCodeIA() != null) {
+            codeIA = String.valueOf(enseignant.getCodeIA()).substring(1, 3);
+        } else {
+            codeIA = String.valueOf(enseignant.getCodeIA()).substring(1, 3);
         }
-        else if(enseignant.getCodeIA()==CodeIA.Autres && enseignant.getAutreCodeIA()!=null){
-            codeIA= String.valueOf (enseignant.getCodeIA()).substring(1,3);
-        }
-        else
-        {codeIA= String.valueOf (enseignant.getCodeIA()).substring(1, 3);}
 
-        matricule=matricule.concat(codeIA).concat(order);
+        matricule = matricule.concat(codeIA).concat(order);
         //calcule de checksum (differance de la somme des valeurs du matricule de position paire et impaire)
         int sPaire = 0;
         int sImpaire = 0;
@@ -78,9 +76,9 @@ public class EnseignantServiceImpl implements EnseignantService {
             }
         }
         char l = lettre.charAt(diff - 1);
-        matricule = matricule + l;
+        matricule = matricule + "/" + l;
         // ne pas pouvoir modifier le matricule
-        // if (enseignant.getMatriculeEns() == null) 
+        // if (enseignant.getMatriculeEns() == null)
         enseignant.setMatriculeEns(matricule);
 
         return enseignantRepository.save(enseignant);
@@ -93,7 +91,6 @@ public class EnseignantServiceImpl implements EnseignantService {
             order = "00" + id;
         } else if (id.length() == 2) {
             order = "0" + id;
-        
         } else if (id.length() == 3) {
             order = id;
         } else {

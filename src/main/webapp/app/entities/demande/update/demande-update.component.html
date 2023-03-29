@@ -15,7 +15,7 @@
           <label class="form-label" for="field_motif">Motif</label>
           <select class="form-control" name="motif" formControlName="motif" id="field_motif" data-cy="motif">
             <option [ngValue]="null"></option>
-            <option *ngFor="let motif of motifValues" [value]="motif">motif</option>
+            <option *ngFor="let motif of motifValues" [value]="motif">{{ motif }}</option>
           </select>
           <div *ngIf="editForm.get('motif')!.invalid && (editForm.get('motif')!.dirty || editForm.get('motif')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('motif')?.errors?.required"> This field is required. </small>
@@ -32,7 +32,7 @@
             data-cy="typeDemandeur"
           >
             <option [ngValue]="null"></option>
-            <option *ngFor="let typeDemandeur of typeDemandeurValues" [value]="typeDemandeur">typeDemandeur</option>
+            <option *ngFor="let typeDemandeur of typeDemandeurValues" [value]="typeDemandeur">{{ typeDemandeur }}</option>
           </select>
           <div
             *ngIf="
