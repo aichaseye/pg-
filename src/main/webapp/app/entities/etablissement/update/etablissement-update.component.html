@@ -1,4 +1,3 @@
-
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
@@ -6,767 +5,1007 @@
 
       <div>
         <jhi-alert-error></jhi-alert-error>
-
-        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
-          <label class="form-label" for="field_id">ID</label>
-          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-        </div>
-
-        <div class="row mb-3" [hidden]="editForm.get('matriculeEtab')!.value == null"  >
-          <label class="form-label" for="field_matriculeEtab">Matricule Etab</label>
-          <input
-            type="text"
-            class="form-control"
-            name="matriculeEtab"
-            id="field_matriculeEtab"
-            data-cy="matriculeEtab"
-            formControlName="matriculeEtab"
-            [readonly]="true"
-          />
-          <div
-            *ngIf="
-              editForm.get('matriculeEtab')!.invalid && (editForm.get('matriculeEtab')!.dirty || editForm.get('matriculeEtab')!.touched)
-            "
-          ></div>
-        </div>
-        <!-- region -->
-        <div class="row mb-3">
-
-          <label class="form-label" for="field_region">Region</label>
-          <select class="form-control" name="region" formControlName="region" id="field_region" data-cy="region">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let nomReg of nomRegValues" [value]="nomReg">{{ nomReg }}</option>
-          </select>
-          
-          <div *ngIf="editForm.value.region === 'DAKAR'">
-            <!-- nom dep  -->
+        <!-- debut -->
+        <div class="row">
+          <div class="col-md-6">
             <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de dakar</label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
+              <label class="form-label" for="field_region">Region</label>
+              <select class="form-control" name="region" formControlName="region" id="field_region" data-cy="region">
                 <option [ngValue]="null"></option>
-                <option>Dakar</option>
-                <option>Rufisque</option>
-                <option>Pikine</option>
-                <option>Guediawaye</option>
-                <option>Keur_Massar</option>
-                <option>Autre</option>
+                <option *ngFor="let nomReg of nomRegValues" [value]="nomReg">{{ nomReg }}</option>
               </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
+
+              <div *ngIf="editForm.value.region === 'DAKAR'">
+                <!-- nom dep  -->
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de dakar</label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Dakar</option>
+                    <option>Rufisque</option>
+                    <option>Pikine</option>
+                    <option>Guediawaye</option>
+                    <option>Keur_Massar</option>
+                    <option>Autre</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+
+                <!-- code IA  -->
+                <div *ngIf="editForm.value.departement === 'Dakar'">
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C01</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="editForm.value.departement === 'Pikine'">
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C16</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="editForm.value.departement === 'Guediawaye'">
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C16</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="editForm.value.departement === 'Rufisque'">
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C15</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="editForm.value.departement === 'Keur_Massar'">
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C17</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- nom etab -->
+                <div class="form-group">
+                  <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                  <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                    <option [ngValue]="null"></option>
+
+                    <option>CEDT_G15</option>
+                    <option>CFP_RUFISQUE</option>
+                    <option>CFP_OUAKAM</option>
+                    <option>CNQP</option>
+                    <option>CFPC_DELAFOSSE</option>
+                    <option>CFPJ_YMCA</option>
+                    <option>CFPT_SJ</option>
+                    <option>CNCPI</option>
+                    <option>CFP_MEDINA_GUEULE_TAPEE</option>
+                    <option>CFP_DAKAR</option>
+                    <option>ICCM</option>
+                    <option>CFA</option>
+                    <option>CFP_PIKINE</option>
+                    <option>CFP_THIAROYE</option>
+                    <option>CFP_SEBIKHOTANE</option>
+                    <option>CFP_NIAGA</option>
+                    <option>LTID_DAKAR</option>
+                    <option>LTCD_DAKAR</option>
+                    <option>LSLL_DAKAR</option>
+                    <option>CFA</option>
+                    <option>AUTRE</option>
+                  </select>
+                  <div
+                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                  ></div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
               </div>
-            </div>
-              
-              <!-- code IA  -->
-               <div *ngIf="editForm.value.departement === 'Dakar'">
+
+              <div *ngIf="editForm.value.region === 'THIES'">
                 <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C01</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  <label class="form-label" for="field_departement">Departement de Thies</label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Thies</option>
+                    <option>Mbour</option>
+                    <option>Tivaoune</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
                 </div>
-                
-                 </div>
-               </div>
-               <div *ngIf="editForm.value.departement === 'Pikine' ">
                 <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C16</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                  <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                    <option [ngValue]="null"></option>
+
+                    <option>CEP_THIES</option>
+                    <option>CFP_TIVAOUANE</option>
+                    <option>CFP_FISSEL</option>
+                    <option>CFP_JOAL</option>
+                    <option>CFP_MONT_ROLLAND</option>
+                    <option>CFP_NDIAGANIAO</option>
+                    <option>CFP_THIADIAYE</option>
+                    <option>CNAFP_THIES</option>
+                    <option>CAP_ENFEFS_THIES</option>
+                    <option>CFP_MBOUR</option>
+                    <option>CFP_NGUEKHOKH</option>
+                    <option>CFP_KHOMBOLE</option>
+                    <option>CFP_TAIBA_NDIAYE</option>
+                    <option>CFP_LALANE</option>
+                    <option>LETFP_THIES</option>
+                    <option>AUTRE</option>
+                  </select>
+                  <div
+                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                  ></div>
                 </div>
-                 </div>
-               </div>
-               <div *ngIf="editForm.value.departement === 'Guediawaye' ">
-                <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C16</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-               </div>
-               <div *ngIf="editForm.value.departement === 'Rufisque'">
-                <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C15</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-               </div>
-               <div *ngIf="editForm.value.departement === 'Keur_Massar'">
                 <div class="form-group">
                   <label class="form-label" for="field_codeIA">Code IA</label>
                   <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
                     <option [ngValue]="null"></option>
-                    <option >C17</option>
-                    <option >Autres</option>
+                    <option>C13</option>
+                    <option>Autres</option>
                   </select>
                   <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
                     <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
                   </div>
-                
                 </div>
-               </div>
-               <!-- nom etab -->
-            <div class="form-group">
-              <label class="form-label" for="field_nomEtab">Nom Etab</label>
-              <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                <option [ngValue]="null"></option>
-               
-                <option >CEDT_G15</option>
-                <option >CFP_RUFISQUE</option>
-                <option >CFP_OUAKAM</option>
-                <option >CNQP</option>
-                <option >CFPC_DELAFOSSE</option> 
-                <option >CFPJ_YMCA</option> 
-                <option >CFPT_SJ	</option>  
-                <option >CNCPI	</option> 
-                <option >CFP_MEDINA_GUEULE_TAPEE	</option>
-                <option >CFP_DAKAR	</option>
-                <option >ICCM	</option>
-                <option >CFA	</option>
-                <option >CFP_PIKINE	</option>
-                <option >CFP_THIAROYE	</option>
-                <option >CFP_SEBIKHOTANE	</option>
-                <option >CFP_NIAGA	</option>
-                <option >LTID_DAKAR	</option>
-                <option >LTCD_DAKAR	</option>
-                <option >LSLL_DAKAR	</option>
-                <option >CFA	</option>
-                <option >AUTRE	</option>
-              </select>
-              <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-           
-          <div *ngIf="editForm.value.region === 'THIES'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Thies</label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Thies</option>
-                <option>Mbour</option>
-                <option>Tivaoune</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="field_nomEtab">Nom Etab</label>
-              <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                <option [ngValue]="null"></option>
-               
-                <option >CEP_THIES</option>
-                <option >CFP_TIVAOUANE</option>
-                <option >CFP_FISSEL</option>
-                <option >CFP_JOAL</option>
-                <option >CFP_MONT_ROLLAND</option> 
-                <option >CFP_NDIAGANIAO</option>
-                <option >CFP_THIADIAYE	</option>  
-                <option >CNAFP_THIES	</option> 
-                <option >CAP_ENFEFS_THIES	</option>
-                <option >CFP_MBOUR	</option>
-                <option >CFP_NGUEKHOKH	</option>
-                <option >CFP_KHOMBOLE	</option>
-                <option >CFP_TAIBA_NDIAYE	</option>
-                <option >CFP_LALANE	</option>
-                <option >LETFP_THIES	</option>
-                <option >AUTRE	</option>
-              </select>
-              <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="field_codeIA">Code IA</label>
-              <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                <option [ngValue]="null"></option>
-                <option >C13</option>
-                <option >Autres</option>
-              </select>
-              <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-              </div>
-             </div>
 
-            <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small>
-          </div>
+                <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small>
+              </div>
 
-          <div *ngIf="editForm.value.region === 'SAINT_LOUIS'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de SL</label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Saint_Louis</option>
-                <option>Dagana</option>
-                <option>Podor</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
+              <div *ngIf="editForm.value.region === 'SAINT_LOUIS'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de SL</label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Saint_Louis</option>
+                    <option>Dagana</option>
+                    <option>Podor</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_SAINT_LOUIS</option>
+                      <option>CRFP_SAINT_LOUIS</option>
+                      <option>CDFP_RICHARD_TOLL</option>
+                      <option>CFP_DAGANA</option>
+                      <option>CFP_PODOR</option>
+                      <option>CDFP_PODOR</option>
+                      <option>CFP_AERE_LAO</option>
+                      <option>LTAP_SAINT_LOUIS</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_codeIA">Code IA</label>
+                  <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                    <option [ngValue]="null"></option>
+                    <option>C10</option>
+                    <option>Autres</option>
+                  </select>
+                  <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  </div>
+                </div>
+
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
               </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                  
-                  <option >CFP_SAINT_LOUIS</option>
-                  <option >CRFP_SAINT_LOUIS</option>
-                  <option >CDFP_RICHARD_TOLL</option>
-                  <option >CFP_DAGANA</option>
-                  <option >CFP_PODOR</option> 
-                  <option >CDFP_PODOR</option>
-                  <option >CFP_AERE_LAO	</option>  
-                  <option >LTAP_SAINT_LOUIS	</option> 
-                  <option >AUTRE	</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
+
+              <div *ngIf="editForm.value.region === 'DIOURBEL'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Diourbel</label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Diourbel</option>
+                    <option>Mbacke</option>
+                    <option>Bambey</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_DIOURBEL</option>
+                      <option>CFP_BAMBEY</option>
+                      <option>CFP_TOUBA</option>
+                      <option>CFP_MBACKE</option>
+                      <option>CFP_TAIF</option>
+                      <option>CDFP_MBACKE</option>
+                      <option>CFP_NDOULO</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C13</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
               </div>
-            </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C10</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+
+              <div *ngIf="editForm.value.region === 'LOUGA'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Louga </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Louga</option>
+                    <option>Linguere</option>
+                    <option>Kebemer</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_LOUGA</option>
+                      <option>CFP_KEBEMER</option>
+                      <option>CFP_LINGUERE</option>
+                      <option>CFP_LOUGA</option>
+                      <option>CFP_NGOURANE</option>
+                      <option>CFP_DAHRA</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_codeIA">Code IA</label>
+                  <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                    <option [ngValue]="null"></option>
+                    <option>C08</option>
+                    <option>Autres</option>
+                  </select>
+                  <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'FATICK'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Fatick </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Fatick</option>
+                    <option>Foundiougne</option>
+                    <option>Gossas</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_FATICK</option>
+                      <option>CFP_DIOFIOR</option>
+                      <option>CFP_DIONEWAR</option>
+                      <option>CFP_DJILOR_SALOUM</option>
+                      <option>CFP_FAOYE</option>
+                      <option>CFP_FOUNDIOUGNE</option>
+                      <option>CFP_LOUL_SESSENE</option>
+                      <option>CFP_NIAKHAR</option>
+                      <option>CFP_GOSSAS</option>
+                      <option>CFP_TOUCAR</option>
+                      <option>CFP_SOKONE</option>
+                      <option>CFP_DIAKHAO</option>
+                      <option>LT_FATICK</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C03</option>
+                      <option>Autres</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'KAFFRINE'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Kaffrine </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Kaffrine</option>
+                    <option>Birkelane</option>
+                    <option>Koungheul</option>
+                    <option>Malem_Hodar</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_KAFFRINE</option>
+                      <option>CFP_BIRKELANE</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C04</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'KAOLACK'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Kaolack </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Kaolack</option>
+                    <option>Guinguineo</option>
+                    <option>Nioro_du_Rip</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_KAOLACK</option>
+                      <option>CFP_MBADAKHOUNE</option>
+                      <option>CFP_GUINGUINEO</option>
+                      <option>CFP_NIORO</option>
+                      <option>CFP_POROKHANE</option>
+                      <option>LCAN_KAOLACK</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C05</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'MATAM'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Matam </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Matam</option>
+                    <option>Kanel</option>
+                    <option>Ranerou</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+
+                      <option>CFP_MATAM</option>
+                      <option>CFP_OUROSSOGUI</option>
+                      <option>CFP_WAOUNDE</option>
+                      <option>CFP_KANEL</option>
+                      <option>CFP_RANEROU</option>
+                      <option>SINTHIOU_BAMBAMBE</option>
+                      <option>THIOUBALEL</option>
+                      <option>MBOUMBA</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C09</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'TAMBACOUNDA'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Tambacounda </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Tambacounda</option>
+                    <option>Bakel</option>
+                    <option>Goudiry</option>
+                    <option>Koumpentoum</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+                      <option>CFP_TAMBA</option>
+                      <option>CFP_BAKEL1</option>
+                      <option>CFP_BAKEL2</option>
+                      <option>CFP_FORAMECA</option>
+                      <option>CFP_KIDIRA</option>
+                      <option>CFP_VELINGARA</option>
+                      <option>MEDINA_GOUNASS</option>
+                      <option>CFP_GOUDIRY</option>
+                      <option>LT_TAMBA</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C12</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'KEDOUGOU'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Kedougou </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Kedougou</option>
+                    <option>Salemata</option>
+                    <option>Saraya</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                    <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                      <option [ngValue]="null"></option>
+                      <option>CFP_KEDOUGOU</option>
+                      <option>CFP_SALEMATA</option>
+                      <option>LTIMK_KEDOUGOU</option>
+                      <option>AUTRE</option>
+                    </select>
+                    <div
+                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                    ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="field_codeIA">Code IA</label>
+                    <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                      <option [ngValue]="null"></option>
+                      <option>C06</option>
+                    </select>
+                    <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'KOLDA'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Kolda </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Kolda</option>
+                    <option>Velingara</option>
+                    <option>Medina_Yoro_Foulah</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                  <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                    <option [ngValue]="null"></option>
+                    <option>CFP_KOLDA</option>
+                    <option>CFP_DABO</option>
+                    <option>CFP_KOUNKANE</option>
+                    <option>CFP_MEDINA_YORO_FOULAH</option>
+                    <option>CFP_SARE_YOBA</option>
+                    <option>CRFP_KOLDA</option>
+                    <option>CFP_VELINGARA</option>
+                    <option>LT_KOLDA</option>
+                    <option>AUTRE</option>
+                  </select>
+                  <div
+                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_codeIA">Code IA</label>
+                  <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                    <option [ngValue]="null"></option>
+                    <option>C07</option>
+                  </select>
+                  <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+
+              <div *ngIf="editForm.value.region === 'SEDHIOU'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Sedhiou </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Sedhiou</option>
+                    <option>Bounkiling</option>
+                    <option>Goudomp</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                  <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                    <option [ngValue]="null"></option>
+                    <option>CFP_SEDHIOU</option>
+                    <option>CPAR_SEDHIOU</option>
+                    <option>CENTRE_REFERENCE_SEDHIOU</option>
+                    <option>CENTRE_REFERENCE_BOUNKILING</option>
+                    <option>AUTRE</option>
+                  </select>
+                  <div
+                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_codeIA">Code IA</label>
+                  <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                    <option [ngValue]="null"></option>
+                    <option>C11</option>
+                  </select>
+                  <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  </div>
+                </div>
+
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+              <!-- si region = zig affiche ses dep et et ces etablissments -->
+              <div *ngIf="editForm.value.region === 'ZIGINCHOR'">
+                <div class="form-group">
+                  <label class="form-label" for="field_departement">Departement de Ziguinchor </label>
+                  <select
+                    class="form-control"
+                    name="departement"
+                    formControlName="departement"
+                    id="field_departement"
+                    data-cy="departement"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option>Ziguinchor</option>
+                    <option>Bignona</option>
+                    <option>Oussouye</option>
+                  </select>
+
+                  <div
+                    *ngIf="
+                      editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)
+                    "
+                  >
+                    <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_nomEtab">Nom Etab</label>
+                  <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                    <option [ngValue]="null"></option>
+                    <option>CRFP_ZIGUINCHOR</option>
+                    <option>CFP_ZIGUINCHOR</option>
+                    <option>CFP_BIGNONA</option>
+                    <option>CFP_OUSSOUYE</option>
+                    <option>CFP_ABENE</option>
+                    <option>CFP_BAILA</option>
+                    <option>CFP_SAINT_MARC</option>
+                    <option>ALBADAR</option>
+                    <option>CFP_SINDIAN</option>
+                    <option>CFP_TENDOUCK</option>
+                    <option>CFP_COUBANAO</option>
+                    <option>CFP_FANDA</option>
+                    <option>LTAEB_BIGNONA</option>
+                    <option>AUTRE</option>
+                  </select>
+                  <div
+                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_codeIA">Code IA</label>
+                  <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
+                    <option [ngValue]="null"></option>
+                    <option>C14</option>
+                  </select>
+                  <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
+                  </div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+              <div *ngIf="editForm.value.region === 'AUTRE'">
+                <div class="form-group">
+                  <label class="form-label" for="field_autreRegion">Autre Region</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreRegion"
+                    id="field_autreRegion"
+                    data-cy="autreRegion"
+                    formControlName="autreRegion"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="field_autreDep">Autre Dep</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreDep"
+                    id="field_autreDep"
+                    data-cy="autreDep"
+                    formControlName="autreDep"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_autreNomeEtab">Autre Nom Etab</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreNomeEtab"
+                    id="field_autreNomeEtab"
+                    data-cy="autreNomeEtab"
+                    formControlName="autreNomeEtab"
+                  />
+                  <div
+                    *ngIf="
+                      editForm.get('autreNomeEtab')!.invalid &&
+                      (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
+                    "
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreCodeIA"
+                    id="field_autreCodeIA"
+                    data-cy="autreCodeIA"
+                    formControlName="autreCodeIA"
+                  />
+                  <div
+                    *ngIf="
+                      editForm.get('autreNomeEtab')!.invalid &&
+                      (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
+                    "
+                  ></div>
+                </div>
+                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
+              </div>
+              <div *ngIf="editForm.value.departement === 'Autre'">
+                <div class="form-group">
+                  <label class="form-label" for="field_autreDep">Autre Dep</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreDep"
+                    id="field_autreDep"
+                    data-cy="autreDep"
+                    formControlName="autreDep"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="autreCodeIA"
+                    id="field_autreCodeIA"
+                    data-cy="autreCodeIA"
+                    formControlName="autreCodeIA"
+                  />
+                  <div
+                    *ngIf="
+                      editForm.get('autreCodeIA')!.invalid && (editForm.get('autreCodeIA')!.dirty || editForm.get('autreCodeIA')!.touched)
+                    "
+                  ></div>
                 </div>
               </div>
-              
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'DIOURBEL'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Diourbel</label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Diourbel</option>
-                <option>Mbacke</option>
-                <option>Bambey</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-
-                  <option >CFP_DIOURBEL</option>
-                  <option >CFP_BAMBEY</option>
-                  <option >CFP_TOUBA</option>
-                  <option >CFP_MBACKE</option>
-                  <option >CFP_TAIF</option> 
-                  <option >CDFP_MBACKE</option>
-                  <option >CFP_NDOULO	</option>  
-                  <option >AUTRE	</option> 
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-                
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C13</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-              </div>
             </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'LOUGA'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Louga </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Louga</option>
-                <option>Linguere</option>
-                <option>Kebemer</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-               
-                  <option >CFP_LOUGA</option>
-                  <option >CFP_KEBEMER</option>
-                  <option >CFP_LINGUERE</option>
-                  <option >CFP_LOUGA</option>
-                  <option >CFP_NGOURANE</option>
-                  <option >CFP_DAHRA</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-            </div>
-              <div class="form-group">
-              <label class="form-label" for="field_codeIA">Code IA</label>
-              <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                <option [ngValue]="null"></option>
-                <option >C08</option>
-                <option >Autres</option>
-              </select>
-              <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-              </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'FATICK'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Fatick </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Fatick</option>
-                <option>Foundiougne</option>
-                <option>Gossas</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                 
-                  <option >CFP_FATICK</option>
-                  <option >CFP_DIOFIOR</option>
-                  <option >CFP_DIONEWAR</option>
-                  <option >CFP_DJILOR_SALOUM</option> 
-                  <option >CFP_FAOYE</option>
-                  <option >CFP_FOUNDIOUGNE	</option>  
-                  <option >CFP_LOUL_SESSENE</option>
-                  <option >CFP_NIAKHAR</option>
-                  <option >CFP_GOSSAS</option>
-                  <option >CFP_TOUCAR</option>
-                  <option >CFP_SOKONE</option>
-                  <option >CFP_DIAKHAO</option>
-                  <option >LT_FATICK</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C03</option>
-                  <option >Autres</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-              </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'KAFFRINE'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Kaffrine </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Kaffrine</option>
-                <option>Birkelane</option>
-                <option>Koungheul</option>
-                <option>Malem_Hodar</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-               
-                  <option >CFP_KAFFRINE</option>
-                  <option >CFP_BIRKELANE</option>
-                  <option >AUTRE</option>
-                  
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C04</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'KAOLACK'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Kaolack </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Kaolack</option>
-                <option>Guinguineo</option>
-                <option>Nioro_du_Rip</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                 
-                  <option >CFP_KAOLACK</option>
-                  <option >CFP_MBADAKHOUNE</option>
-                  <option >CFP_GUINGUINEO</option>
-                  <option >CFP_NIORO</option> 
-                  <option >CFP_POROKHANE</option>
-                  <option >LCAN_KAOLACK</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C05</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'MATAM'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Matam </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Matam</option>
-                <option>Kanel</option>
-                <option>Ranerou</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                  
-                  <option >CFP_MATAM</option>
-                  <option >CFP_OUROSSOGUI</option>
-                  <option >CFP_WAOUNDE</option>
-                  <option >CFP_KANEL</option> 
-                  <option >CFP_RANEROU</option>
-                  <option >SINTHIOU_BAMBAMBE</option>
-                  <option >THIOUBALEL</option>  
-                  <option >MBOUMBA</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C09</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'TAMBACOUNDA'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Tambacounda </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Tambacounda</option>
-                <option>Bakel</option>
-                <option>Goudiry</option>
-                <option>Koumpentoum</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                  <option >CFP_TAMBA</option>
-                  <option >CFP_BAKEL1</option>
-                  <option >CFP_BAKEL2</option>
-                  <option >CFP_FORAMECA</option> 
-                  <option >CFP_KIDIRA</option>
-                  <option >CFP_VELINGARA</option>
-                  <option >MEDINA_GOUNASS</option>
-                  <option >CFP_GOUDIRY</option>
-                  <option >LT_TAMBA</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C12</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'KEDOUGOU'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Kedougou </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Kedougou</option>
-                <option>Salemata</option>
-                <option>Saraya</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_nomEtab">Nom Etab</label>
-                <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                  <option [ngValue]="null"></option>
-                  <option >CFP_KEDOUGOU</option>
-                  <option >CFP_SALEMATA</option>
-                  <option >LTIMK_KEDOUGOU</option>
-                  <option >AUTRE</option>
-                </select>
-                <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="field_codeIA">Code IA</label>
-                <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                  <option [ngValue]="null"></option>
-                  <option >C06</option>
-                </select>
-                <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                  <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-                </div>
-                 </div>
-            </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'KOLDA'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Kolda </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Kolda</option>
-                <option>Velingara</option>
-                <option>Medina_Yoro_Foulah</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-            </div>
-           
-          <div class="form-group">
-            <label class="form-label" for="field_nomEtab">Nom Etab</label>
-            <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-              <option [ngValue]="null"></option>
-              <option >CFP_KOLDA</option>
-              <option >CFP_DABO</option>
-              <option >CFP_KOUNKANE</option>
-              <option >CFP_MEDINA_YORO_FOULAH</option> 
-              <option >CFP_SARE_YOBA</option> 
-              <option >CRFP_KOLDA</option> 
-              <option >CFP_VELINGARA</option> 
-              <option >LT_KOLDA</option> 
-              <option >AUTRE</option>
-            </select>
-            <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="field_codeIA">Code IA</label>
-            <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-              <option [ngValue]="null"></option>
-              <option >C07</option>
-            </select>
-            <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-              <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-            </div>
-             </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-
-          <div *ngIf="editForm.value.region === 'SEDHIOU'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Sedhiou </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Sedhiou</option>
-                <option>Bounkiling</option>
-                <option>Goudomp</option>
-              </select>
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="field_nomEtab">Nom Etab</label>
-              <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                <option [ngValue]="null"></option>
-                <option >CFP_SEDHIOU</option>
-                <option >CPAR_SEDHIOU</option>
-                <option >CENTRE_REFERENCE_SEDHIOU</option>
-                <option >CENTRE_REFERENCE_BOUNKILING</option> 
-                <option >AUTRE</option>
-              </select>
-              <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-            </div><div class="form-group">
-              <label class="form-label" for="field_codeIA">Code IA</label>
-              <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                <option [ngValue]="null"></option>
-                <option >C11</option>
-              </select>
-              <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-              </div>
-               </div>
-
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-<!-- si region = zig affiche ses dep et et ces etablissments -->
-          <div *ngIf="editForm.value.region === 'ZIGINCHOR'">
-            <div class="form-group">
-              <label class="form-label" for="field_departement">Departement de Ziguinchor </label>
-              <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-                <option [ngValue]="null"></option>
-                <option>Ziguinchor</option>
-                <option>Bignona</option>
-                <option>Oussouye</option>
-              </select>
-              
-              <div
-                *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)"
-              >
-                <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="field_nomEtab">Nom Etab</label>
-              <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-                <option [ngValue]="null"></option>
-                <option >CRFP_ZIGUINCHOR</option>
-                <option >CFP_ZIGUINCHOR</option>
-                <option >CFP_BIGNONA</option>
-                <option >CFP_OUSSOUYE</option>
-                <option >CFP_ABENE</option> 
-                <option >CFP_BAILA</option>
-                <option >CFP_SAINT_MARC</option>
-                <option >ALBADAR</option>
-                <option >CFP_SINDIAN</option>
-                <option >CFP_TENDOUCK</option>
-                <option >CFP_COUBANAO</option>
-                <option >CFP_FANDA</option>
-                <option >LTAEB_BIGNONA</option>
-                <option >AUTRE</option>
-              </select>
-              <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="field_codeIA">Code IA</label>
-              <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-                <option [ngValue]="null"></option>
-                <option >C14</option>
-              </select>
-              <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-                <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-              </div>
-               </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-          <div *ngIf="editForm.value.region === 'AUTRE'">
-             
-              <div class="form-group">
-                <label class="form-label" for="field_autreRegion">Autre Region</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="autreRegion"
-                  id="field_autreRegion"
-                  data-cy="autreRegion"
-                  formControlName="autreRegion"
-                />
-              </div>
-      
-              <div class="form-group">
-                <label class="form-label" for="field_autreDep">Autre Dep</label>
-                <input type="text" class="form-control" name="autreDep" id="field_autreDep" data-cy="autreDep" formControlName="autreDep" />
-              </div>
+            <div *ngIf="editForm.value.nomEtab === 'AUTRE'">
               <div class="form-group">
                 <label class="form-label" for="field_autreNomeEtab">Autre Nom Etab</label>
                 <input
@@ -779,10 +1018,13 @@
                 />
                 <div
                   *ngIf="
-                    editForm.get('autreNomeEtab')!.invalid && (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
+                    editForm.get('autreNomeEtab')!.invalid &&
+                    (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
                   "
                 ></div>
               </div>
+            </div>
+            <div *ngIf="editForm.value.codeIA === 'Autres'">
               <div class="form-group">
                 <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
                 <input
@@ -795,209 +1037,117 @@
                 />
                 <div
                   *ngIf="
-                    editForm.get('autreNomeEtab')!.invalid && (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
+                    editForm.get('autreCodeIA')!.invalid && (editForm.get('autreCodeIA')!.dirty || editForm.get('autreCodeIA')!.touched)
                   "
                 ></div>
               </div>
-            <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
-          </div>
-          <div *ngIf="editForm.value.departement === 'Autre'">
-            <div class="form-group">
-              <label class="form-label" for="field_autreDep">Autre Dep</label>
-              <input type="text" class="form-control" name="autreDep" id="field_autreDep" data-cy="autreDep" formControlName="autreDep" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
+              <label class="form-label" for="field_bFPA">bFPA</label>
+              <select class="form-control" id="field_bFPA" data-cy="bFPA" name="bFPA" formControlName="bFPA">
+                <option [ngValue]="null"></option>
+                <option
+                  [ngValue]="bFPAOption.id === editForm.get('bFPA')!.value?.id ? editForm.get('bFPA')!.value : bFPAOption"
+                  *ngFor="let bFPAOption of bFPASSharedCollection; trackBy: trackBFPAById"
+                >
+                  {{ bFPAOption.nomPrenom }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [hidden]="editForm.get('matriculeEtab')!.value == null">
+              <label class="form-label" for="field_matriculeEtab">Matricule Etab</label>
               <input
                 type="text"
                 class="form-control"
-                name="autreCodeIA"
-                id="field_autreCodeIA"
-                data-cy="autreCodeIA"
-                formControlName="autreCodeIA"
+                name="matriculeEtab"
+                id="field_matriculeEtab"
+                data-cy="matriculeEtab"
+                formControlName="matriculeEtab"
+                [readonly]="true"
               />
               <div
                 *ngIf="
-                  editForm.get('autreCodeIA')!.invalid && (editForm.get('autreCodeIA')!.dirty || editForm.get('autreCodeIA')!.touched)
+                  editForm.get('matriculeEtab')!.invalid && (editForm.get('matriculeEtab')!.dirty || editForm.get('matriculeEtab')!.touched)
                 "
               ></div>
             </div>
-           </div>
-        </div>
-        <div *ngIf="editForm.value.nomEtab === 'AUTRE'">
-          <div class="form-group">
-            <label class="form-label" for="field_autreNomeEtab">Autre Nom Etab</label>
-            <input
-              type="text"
-              class="form-control"
-              name="autreNomeEtab"
-              id="field_autreNomeEtab"
-              data-cy="autreNomeEtab"
-              formControlName="autreNomeEtab"
-            />
-            <div
-              *ngIf="
-                editForm.get('autreNomeEtab')!.invalid && (editForm.get('autreNomeEtab')!.dirty || editForm.get('autreNomeEtab')!.touched)
-              "
-            ></div>
+            <div class="form-group">
+              <label class="form-label" for="field_typeEtab">Type Etab</label>
+              <select class="form-control" name="typeEtab" formControlName="typeEtab" id="field_typeEtab" data-cy="typeEtab">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let typeEtab of typeEtabValues" [value]="typeEtab">{{ typeEtab }}</option>
+              </select>
+              <div *ngIf="editForm.get('typeEtab')!.invalid && (editForm.get('typeEtab')!.dirty || editForm.get('typeEtab')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('typeEtab')?.errors?.required"> This field is required. </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="field_anneeCreation">Annee Creation</label>
+              <div class="input-group">
+                <input
+                  id="field_anneeCreation"
+                  data-cy="anneeCreation"
+                  type="text"
+                  class="form-control"
+                  name="anneeCreation"
+                  ngbDatepicker
+                  #anneeCreationDp="ngbDatepicker"
+                  formControlName="anneeCreation"
+                />
+                <button type="button" class="btn btn-secondary" (click)="anneeCreationDp.toggle()">
+                  <fa-icon icon="calendar-alt"></fa-icon>
+                </button>
+              </div>
+              <div
+                *ngIf="
+                  editForm.get('anneeCreation')!.invalid && (editForm.get('anneeCreation')!.dirty || editForm.get('anneeCreation')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('anneeCreation')?.errors?.required">
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="field_statut">Statut</label>
+              <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let statutEtab of statutEtabValues" [value]="statutEtab">{{ statutEtab }}</option>
+              </select>
+              <div *ngIf="editForm.get('statut')!.invalid && (editForm.get('statut')!.dirty || editForm.get('statut')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('statut')?.errors?.required"> This field is required. </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="field_emailEtab">Email Etab</label>
+              <input
+                type="text"
+                class="form-control"
+                name="emailEtab"
+                id="field_emailEtab"
+                data-cy="emailEtab"
+                formControlName="emailEtab"
+              />
+              <div *ngIf="editForm.get('emailEtab')!.invalid && (editForm.get('emailEtab')!.dirty || editForm.get('emailEtab')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('emailEtab')?.errors?.required"> This field is required. </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="field_typeInsp">Type Insp</label>
+              <select class="form-control" name="typeInsp" formControlName="typeInsp" id="field_typeInsp" data-cy="typeInsp">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let typeInspection of typeInspectionValues" [value]="typeInspection">{{ typeInspection }}</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div *ngIf="editForm.value.codeIA === 'Autres'">
-          <div class="form-group">
-            <label class="form-label" for="field_autreCodeIA">Autre Code IA</label>
-            <input
-              type="text"
-              class="form-control"
-              name="autreCodeIA"
-              id="field_autreCodeIA"
-              data-cy="autreCodeIA"
-              formControlName="autreCodeIA"
-            />
-            <div
-              *ngIf="
-                editForm.get('autreCodeIA')!.invalid && (editForm.get('autreCodeIA')!.dirty || editForm.get('autreCodeIA')!.touched)
-              "
-            ></div>
-          </div>
-         </div>
-            
-        <!-- <div class="row mb-3">
-          <label class="form-label" for="field_region">Region</label>
-          <select class="form-control" name="region" formControlName="region" id="field_region" data-cy="region">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let nomReg of nomRegValues" [value]="nomReg">nomReg</option>
-          </select>
-          <div *ngIf="editForm.get('region')!.invalid && (editForm.get('region')!.dirty || editForm.get('region')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_departement">Departement</label>
-          <select class="form-control" name="departement" formControlName="departement" id="field_departement" data-cy="departement">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let nomDep of nomDepValues" [value]="nomDep">nomDep</option>
-          </select>
-          <div *ngIf="editForm.get('departement')!.invalid && (editForm.get('departement')!.dirty || editForm.get('departement')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('departement')?.errors?.required"> This field is required. </small>
-          </div>
-        </div> -->
-
-        <!-- <div class="row mb-3">
-          <label class="form-label" for="field_autreRegion">Autre Region</label>
-          <input
-            type="text"
-            class="form-control"
-            name="autreRegion"
-            id="field_autreRegion"
-            data-cy="autreRegion"
-            formControlName="autreRegion"
-          />
-        </div> -->
-
-        <!-- <div class="row mb-3">
-          <label class="form-label" for="field_autreDep">Autre Dep</label>
-          <input type="text" class="form-control" name="autreDep" id="field_autreDep" data-cy="autreDep" formControlName="autreDep" />
-        </div> -->
-
-        <!-- <div class="row mb-3">
-          <label class="form-label" for="field_nomEtab">Nom Etab</label>
-          <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let nomEtab of nomEtabValues" [value]="nomEtab">nomEtab</option>
-          </select>
-          <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"></div>
-        </div> -->
-<!-- code IA -->
-        <!-- <div class="row mb-3">
-          <label class="form-label" for="field_codeIA">Code IA</label>
-          <select class="form-control" name="codeIA" formControlName="codeIA" id="field_codeIA" data-cy="codeIA">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let codeIA of codeIAValues" [value]="codeIA">{{codeIA}}</option>
-          </select>
-          <div *ngIf="editForm.get('codeIA')!.invalid && (editForm.get('codeIA')!.dirty || editForm.get('codeIA')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('codeIA')?.errors?.required"> This field is required. </small>
-          </div>
-        </div> -->
-
-        
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_typeEtab">Type Etab</label>
-          <select class="form-control" name="typeEtab" formControlName="typeEtab" id="field_typeEtab" data-cy="typeEtab">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let typeEtab of typeEtabValues" [value]="typeEtab">{{typeEtab}}</option>
-          </select>
-          <div *ngIf="editForm.get('typeEtab')!.invalid && (editForm.get('typeEtab')!.dirty || editForm.get('typeEtab')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('typeEtab')?.errors?.required"> This field is required. </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_anneeCreation">Annee Creation</label>
-          <div class="input-group">
-            <input
-              id="field_anneeCreation"
-              data-cy="anneeCreation"
-              type="text"
-              class="form-control"
-              name="anneeCreation"
-              ngbDatepicker
-              #anneeCreationDp="ngbDatepicker"
-              formControlName="anneeCreation"
-            />
-            <button type="button" class="btn btn-secondary" (click)="anneeCreationDp.toggle()">
-              <fa-icon icon="calendar-alt"></fa-icon>
-            </button>
-          </div>
-          <div
-            *ngIf="
-              editForm.get('anneeCreation')!.invalid && (editForm.get('anneeCreation')!.dirty || editForm.get('anneeCreation')!.touched)
-            "
-          >
-            <small class="form-text text-danger" *ngIf="editForm.get('anneeCreation')?.errors?.required"> This field is required. </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_statut">Statut</label>
-          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let statutEtab of statutEtabValues" [value]="statutEtab">{{statutEtab}}</option>
-          </select>
-          <div *ngIf="editForm.get('statut')!.invalid && (editForm.get('statut')!.dirty || editForm.get('statut')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('statut')?.errors?.required"> This field is required. </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_emailEtab">Email Etab</label>
-          <input type="text" class="form-control" name="emailEtab" id="field_emailEtab" data-cy="emailEtab" formControlName="emailEtab" />
-          <div *ngIf="editForm.get('emailEtab')!.invalid && (editForm.get('emailEtab')!.dirty || editForm.get('emailEtab')!.touched)">
-            <small class="form-text text-danger" *ngIf="editForm.get('emailEtab')?.errors?.required"> This field is required. </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_typeInsp">Type Insp</label>
-          <select class="form-control" name="typeInsp" formControlName="typeInsp" id="field_typeInsp" data-cy="typeInsp">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let typeInspection of typeInspectionValues" [value]="typeInspection">{{typeInspection}}</option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_bFPA">BFPA</label>
-          <select class="form-control" id="field_bFPA" data-cy="bFPA" name="bFPA" formControlName="bFPA">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="bFPAOption.id === editForm.get('bFPA')!.value?.id ? editForm.get('bFPA')!.value : bFPAOption"
-              *ngFor="let bFPAOption of bFPASSharedCollection; trackBy: trackBFPAById"
-            >
-              {{ bFPAOption.nomPrenom }}
-            </option>
-          </select>
-        </div>
+        <!-- fin -->
       </div>
 
       <div>

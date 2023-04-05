@@ -19,6 +19,7 @@
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="account !== null">
       <ul class="navbar-nav ms-auto">
+        <!-- home ou accueil -->
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
             <span>
@@ -28,7 +29,155 @@
           </a>
         </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+        <!-- entities -->
+
+        <!-- debut mine -->
         <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_ETABLISSEMENT']"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown- toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+            <span>
+              <!-- <fa-icon icon="th-list"></fa-icon> -->
+              <span>Apprenant</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="apprenant"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
+                <span>NIA</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_BFPA']"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown- toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+            <span>
+              <!-- <fa-icon icon="th-list"></fa-icon> -->
+              <span>Enseignant</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="enseignant"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
+                <span>NIE</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_ETABLISSEMENT']"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown- toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+            <span>
+              <!-- <fa-icon icon="th-list"></fa-icon> -->
+              <span>Etablissement</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="etablissement"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
+                <span>Marticule Etablissement</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN']"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown- toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+            <span>
+              <!-- <fa-icon icon="th-list"></fa-icon> -->
+              <span>Matiere</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="matiere"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
+                <span>Marticule Matiere</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_APPRENANT', 'ROLE_ENSEIGNENT']"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown- toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+            <span>
+              <!-- <fa-icon icon="th-list"></fa-icon> -->
+              <span>Demande</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="demande"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
+                <span>Saisir une Demande</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li
           *ngSwitchCase="true"
           ngbDropdown
           class="nav-item dropdown pointer"
@@ -148,7 +297,7 @@
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>BFPA</span>
+                <span>bFPA</span>
               </a>
             </li>
             <li>
@@ -160,12 +309,12 @@
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>File</span>
+                <span>Fichier</span>
               </a>
             </li>
-            <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
-        </li>
+        </li> -->
+        <!-- administration -->
         <li
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
@@ -196,6 +345,7 @@
             <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
           </ul>
         </li>
+        <!-- compte -->
         <li
           ngbDropdown
           class="nav-item dropdown pointer"

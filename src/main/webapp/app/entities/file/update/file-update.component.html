@@ -12,7 +12,7 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_file">File</label>
+          <label class="form-label" for="field_file">Fichier</label>
           <div>
             <div *ngIf="editForm.get('file')!.value" class="form-text text-danger clearfix">
               <a class="pull-start" (click)="openFile(editForm.get('file')!.value, editForm.get('fileContentType')!.value)">open</a><br />

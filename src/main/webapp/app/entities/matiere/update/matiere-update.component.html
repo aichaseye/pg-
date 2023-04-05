@@ -11,7 +11,7 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
           <label class="form-label" for="field_matriculeMatiere">Matricule Matiere</label>
           <input
             type="text"
@@ -20,6 +20,7 @@
             id="field_matriculeMatiere"
             data-cy="matriculeMatiere"
             formControlName="matriculeMatiere"
+            [readonly]="true"
           />
           <div
             *ngIf="
@@ -28,7 +29,6 @@
             "
           ></div>
         </div>
-
         <div class="row mb-3">
           <label class="form-label" for="field_nomMatiere">Nom Matiere</label>
           <input
@@ -40,12 +40,10 @@
             formControlName="nomMatiere"
           />
         </div>
-
         <div class="row mb-3">
           <label class="form-label" for="field_reference">Reference</label>
           <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
         </div>
-
         <div class="row mb-3">
           <label class="form-label" for="field_image">Image</label>
           <div>
