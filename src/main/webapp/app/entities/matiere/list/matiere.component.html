@@ -32,31 +32,31 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="matriculeMatiere"><span>Matricule Matiere</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nomMatiere"><span>Nom Matiere</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="reference"><span>Reference</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="image"><span>Image</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="image"><span>Image</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="region"><span>Region</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="departement"><span>Departement</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreDep"><span>Autre Dep</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="autreDep"><span>Autre Dep</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="codeIA"><span>Code IA</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreCodeIA"><span>Autre Code IA</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="autreCodeIA"><span>Autre Code IA</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="typeStructure"><span>Type Structure</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreStructure"><span>Autre Structure</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="anneeAffectation"><span>Annee Affectation</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="referant.nomPrenom"><span>Referant</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="autreStructure"><span>Autre Structure</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="anneeAffectation"><span>Annee Affectation</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="referant.nomPrenom"><span>Referant</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="comptableMatiere.nomPrenom"><span>Comptable Matiere</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="etablissement.nomEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col"></th>
+          <th scope="col"></th> -->
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let matiere of matieres; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/matiere', matiere.id, 'view']">{{ matiere.id }}</a>
-          </td>
+          </td> -->
           <td>{{ matiere.matriculeMatiere }}</td>
           <td>{{ matiere.nomMatiere }}</td>
           <td>{{ matiere.reference }}</td>
@@ -65,19 +65,19 @@
             <span *ngIf="matiere.image">{{ matiere.imageContentType }}, {{ byteSize(matiere.image) }}</span>
           </td>
           <td>{{ matiere.region }}</td>
-          <td>{{ matiere.autreRegion }}</td>
+          <!-- <td>{{ matiere.autreRegion }}</td> -->
           <td>{{ matiere.departement }}</td>
-          <td>{{ matiere.autreDep }}</td>
+          <!-- <td>{{ matiere.autreDep }}</td> -->
           <td>{{ matiere.codeIA }}</td>
-          <td>{{ matiere.autreCodeIA }}</td>
+          <!-- <td>{{ matiere.autreCodeIA }}</td> -->
           <td>{{ matiere.typeStructure }}</td>
-          <td>{{ matiere.autreStructure }}</td>
-          <td>{{ matiere.anneeAffectation }}</td>
-          <td>
+          <!-- <td>{{ matiere.autreStructure }}</td> -->
+          <!-- <td>{{ matiere.anneeAffectation }}</td> -->
+          <!-- <td>
             <div *ngIf="matiere.referant">
               <a [routerLink]="['/referant', matiere.referant?.id, 'view']">{{ matiere.referant?.nomPrenom }}</a>
             </div>
-          </td>
+          </td> -->
           <td>
             <div *ngIf="matiere.comptableMatiere">
               <a [routerLink]="['/comptable-matiere', matiere.comptableMatiere?.id, 'view']">{{ matiere.comptableMatiere?.nomPrenom }}</a>

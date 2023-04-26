@@ -32,33 +32,33 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="motif"><span>Motif</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="typeDemandeur"><span>Type Demandeur</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="nom"><span>Nom</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="nom"><span>Nom</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="prenom"><span>Prenom</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nomEtab"><span>Nom Etab</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="autreNomEtab"><span>Autre Nom Etab</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="enseignant.numCNI"><span>Enseignant</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="enseignant.numCNI"><span>Enseignant</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="apprenant.telephone"><span>Apprenant</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="etablissement.nomEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="etablissement.nomEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let demande of demandes; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/demande', demande.id, 'view']">{{ demande.id }}</a>
-          </td>
+          </td> -->
           <td>{{ demande.motif }}</td>
           <td>{{ demande.typeDemandeur }}</td>
-          <td>{{ demande.nom }}</td>
+          <!-- <td>{{ demande.nom }}</td>
           <td>{{ demande.prenom }}</td>
           <td>{{ demande.nomEtab }}</td>
           <td>{{ demande.autreNomEtab }}</td>
-          <td>{{ demande.email }}</td>
-          <td>
+          <td>{{ demande.email }}</td> -->
+          <!-- <td>
             <div *ngIf="demande.enseignant">
               <a [routerLink]="['/enseignant', demande.enseignant?.id, 'view']">{{ demande.enseignant?.numCNI }}</a>
             </div>
@@ -67,7 +67,7 @@
             <div *ngIf="demande.apprenant">
               <a [routerLink]="['/apprenant', demande.apprenant?.id, 'view']">{{ demande.apprenant?.telephone }}</a>
             </div>
-          </td>
+          </td> -->
           <td>
             <div *ngIf="demande.etablissement">
               <a [routerLink]="['/etablissement', demande.etablissement?.id, 'view']">{{ demande.etablissement?.nomEtab }}</a>

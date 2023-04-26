@@ -32,44 +32,44 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="matriculeEns"><span>Matricule Ens</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="matriculeEns"><span>Matricule Enseignant</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nom"><span>Nom</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="prenom"><span>Prenom</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="numCNI"><span>Num CNI</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="anneeDentree"><span>Annee Dentree</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="region"><span>Region</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="departement"><span>Departement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="numCNI"><span>Num CNI</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="anneeDentree"><span>Annee Dentree</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="region"><span>Region</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="departement"><span>Departement</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="autreDep"><span>Autre Dep</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="codeIA"><span>Code IA</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreCodeIA"><span>Autre Code IA</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="autreCodeIA"><span>Autre Code IA</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="sexe"><span>Sexe</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="bFPA.nomPrenom"><span>B FPA</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="etablissement.nomEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="bFPA.nomPrenom"><span>B FPA</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="etablissement.nomEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let enseignant of enseignants; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/enseignant', enseignant.id, 'view']">{{ enseignant.id }}</a>
-          </td>
+          </td> -->
           <td>{{ enseignant.matriculeEns }}</td>
           <td>{{ enseignant.nom }}</td>
           <td>{{ enseignant.prenom }}</td>
-          <td>{{ enseignant.numCNI }}</td>
-          <td>{{ enseignant.anneeDentree }}</td>
+          <!-- <td>{{ enseignant.numCNI }}</td> -->
+          <!-- <td>{{ enseignant.anneeDentree }}</td>
           <td>{{ enseignant.region }}</td>
           <td>{{ enseignant.departement }}</td>
           <td>{{ enseignant.autreDep }}</td>
           <td>{{ enseignant.autreRegion }}</td>
           <td>{{ enseignant.codeIA }}</td>
-          <td>{{ enseignant.autreCodeIA }}</td>
+          <td>{{ enseignant.autreCodeIA }}</td> -->
           <td>{{ enseignant.sexe }}</td>
-          <td>{{ enseignant.email }}</td>
-          <td>
+          <!-- <td>{{ enseignant.email }}</td> -->
+          <!-- <td>
             <div *ngIf="enseignant.bFPA">
               <a [routerLink]="['/bfpa', enseignant.bFPA?.id, 'view']">{{ enseignant.bFPA?.nomPrenom }}</a>
             </div>
@@ -78,7 +78,7 @@
             <div *ngIf="enseignant.etablissement">
               <a [routerLink]="['/etablissement', enseignant.etablissement?.id, 'view']">{{ enseignant.etablissement?.nomEtab }}</a>
             </div>
-          </td>
+          </td> -->
           <td class="text-end">
             <div class="btn-group">
               <button

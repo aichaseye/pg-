@@ -32,49 +32,49 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="matriculeEtab"><span>Matricule Etab</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="matriculeEtab"><span>Matricule Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="region"><span>Region</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="departement"><span>Departement</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreDep"><span>Autre Dep</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="nomEtab"><span>Nom Etab</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="codeIA"><span>Code IA</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="autreDep"><span>Autre Dep</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="nomEtab"><span>Nom Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="codeIA"><span>Code IA</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="autreCodeIA"><span>Autre Code IA</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="autreNomeEtab"><span>Autre Nome Etab</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="typeEtab"><span>Type Etab</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="anneeCreation"><span>Annee Creation</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="statut"><span>Statut</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="emailEtab"><span>Email Etab</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="typeInsp"><span>Type Insp</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="bFPA.nomPrenom"><span>B FPA</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="autreNomeEtab"><span>Autre Nome Etab</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="typeEtab"><span>Type Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="anneeCreation"><span>Annee Creation</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="statut"><span>Statut Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="emailEtab"><span>Email Etab</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="typeInsp"><span>Type Insp</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="bFPA.nomPrenom"><span>B FPA</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let etablissement of etablissements; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/etablissement', etablissement.id, 'view']">{{ etablissement.id }}</a>
-          </td>
+          </td> -->
           <td>{{ etablissement.matriculeEtab }}</td>
           <td>{{ etablissement.region }}</td>
           <td>{{ etablissement.departement }}</td>
-          <td>{{ etablissement.autreRegion }}</td>
-          <td>{{ etablissement.autreDep }}</td>
+          <!-- <td>{{ etablissement.autreRegion }}</td>
+          <td>{{ etablissement.autreDep }}</td> -->
           <td>{{ etablissement.nomEtab }}</td>
-          <td>{{ etablissement.codeIA }}</td>
+          <!-- <td>{{ etablissement.codeIA }}</td>
           <td>{{ etablissement.autreCodeIA }}</td>
-          <td>{{ etablissement.autreNomeEtab }}</td>
+          <td>{{ etablissement.autreNomeEtab }}</td> -->
           <td>{{ etablissement.typeEtab }}</td>
-          <td>{{ etablissement.anneeCreation | formatMediumDate }}</td>
+          <!-- <td>{{ etablissement.anneeCreation | formatMediumDate }}</td> -->
           <td>{{ etablissement.statut }}</td>
-          <td>{{ etablissement.emailEtab }}</td>
-          <td>{{ etablissement.typeInsp }}</td>
-          <td>
+          <!-- <td>{{ etablissement.emailEtab }}</td> -->
+          <!-- <td>{{ etablissement.typeInsp }}</td> -->
+          <!-- <td>
             <div *ngIf="etablissement.bFPA">
               <a [routerLink]="['/bfpa', etablissement.bFPA?.id, 'view']">{{ etablissement.bFPA?.nomPrenom }}</a>
             </div>
-          </td>
+          </td> -->
           <td class="text-end">
             <div class="btn-group">
               <button

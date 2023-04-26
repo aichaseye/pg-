@@ -1,23 +1,55 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-
-.hipster {
+h5 {
+  // font-weight: bold;
+  text-align: center;
+}
+h6 {
+  text-align: center;
+  background-size: 60px;
+}
+h4 {
+  text-align: center;
+  background-color: rgb(0, 102, 255);
+  font-weight: bold;
+  color: aliceblue;
+}
+.p2 {
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: relative;
+  margin-bottom: 40px;
+}
+.homeImg {
   display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
-  background-size: contain;
+  width: 600px;
+  height: 300px;
+  background: url('../../content/images/home2.jpg') no-repeat center top;
+  background-size: cover;
 }
+.col-md-4.p {
+  text-align: center;
+  font-size: 20px;
+}
+// .homeFont{
+//   display: inline-block;
+//   width: max-content;
+//   height: max-content;
+//   background-size: contain;
+//   background-image: url('../../content/images/homeFont2.jpg')  ;
+// }
 
-/* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (-moz-min-device-pixel-ratio: 2),
-  only screen and (-o-min-device-pixel-ratio: 2/1),
-  only screen and (min-resolution: 192dpi),
-  only screen and (min-resolution: 2dppx) {
-  .hipster {
-    background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
-    background-size: contain;
-  }
-}
+// /* wait autoprefixer update to allow simple generation of high pixel density media query */
+// @media only screen and (-webkit-min-device-pixel-ratio: 2),
+//   only screen and (-moz-min-device-pixel-ratio: 2),
+//   only screen and (-o-min-device-pixel-ratio: 2/1),
+//   only screen and (min-resolution: 192dpi),
+//   only screen and (min-resolution: 2dppx) {
+//   .hipster {
+//     background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
+//     background-size: contain;
+//   }
+// }

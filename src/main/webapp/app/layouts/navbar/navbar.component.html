@@ -1,10 +1,13 @@
 <nav data-cy="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <!-- <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
+    <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
-      <span class="navbar-title">JhipsterProjectBaseJWT</span>
-      <span class="navbar-version">{{ version }}</span>
-    </a> -->
+      <!-- <span class="navbar-title">JhipsterProjectBaseJWT</span> -->
+      <!-- <span class="navbar-version">{{ version }}</span> -->
+    </a>
+
+    <!-- <img  src="../../../content/images/logo1.png" title="Cette photo montre le logo"
+     alt="logo application" > -->
     <a
       class="navbar-toggler d-lg-none"
       href="javascript:void(0);"
@@ -24,7 +27,7 @@
           <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
             <span>
               <fa-icon icon="home"></fa-icon>
-              <span>Home</span>
+              <span></span>
             </span>
           </a>
         </li>
@@ -56,7 +59,7 @@
                 (click)="collapseNavbar()"
               >
                 <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
-                <span>NIA</span>
+                <span>Matricule</span>
               </a>
             </li>
           </ul>
@@ -85,7 +88,7 @@
                 (click)="collapseNavbar()"
               >
                 <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
-                <span>NIE</span>
+                <span>Matricule</span>
               </a>
             </li>
           </ul>
@@ -114,7 +117,7 @@
                 (click)="collapseNavbar()"
               >
                 <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
-                <span>Marticule Etablissement</span>
+                <span>Codification</span>
               </a>
             </li>
           </ul>
@@ -143,7 +146,7 @@
                 (click)="collapseNavbar()"
               >
                 <!-- <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> -->
-                <span>Marticule Matiere</span>
+                <span>Codification</span>
               </a>
             </li>
           </ul>
@@ -177,144 +180,7 @@
             </li>
           </ul>
         </li>
-        <!-- <li
-          *ngSwitchCase="true"
-          ngbDropdown
-          class="nav-item dropdown pointer"
-          display="dynamic"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
-            <span>
-              <fa-icon icon="th-list"></fa-icon>
-              <span>Entities</span>
-            </span>
-          </a>
-          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="etablissement"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Etablissement</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="enseignant"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Enseignant</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="apprenant"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Apprenant</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="demande"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Demande</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="matiere"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Matiere</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="chef-etablissement"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Chef Etablissement</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="comptable-matiere"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Comptable Matiere</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="referant"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Referant</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="bfpa"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>bFPA</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="file"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Fichier</span>
-              </a>
-            </li>
-          </ul>
-        </li> -->
-        <!-- administration -->
+
         <li
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
@@ -356,7 +222,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
             <span *ngIf="!account?.imageUrl">
               <fa-icon icon="user"></fa-icon>
-              <span>Account</span>
+              <span>Compte</span>
             </span>
             <span *ngIf="account?.imageUrl">
               <img [src]="account!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
@@ -396,7 +262,7 @@
             <li *ngSwitchCase="false">
               <a class="dropdown-item" (click)="login()" id="login" data-cy="login">
                 <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
-                <span>Sign in</span>
+                <span>Se connecter</span>
               </a>
             </li>
             <li *ngSwitchCase="false">
@@ -408,7 +274,7 @@
                 data-cy="register"
               >
                 <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
-                <span>Register</span>
+                <span>Creer un compte</span>
               </a>
             </li>
           </ul>

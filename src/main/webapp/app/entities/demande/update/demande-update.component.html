@@ -11,7 +11,7 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div class="row mb-3">
+        <div class="form-group">
           <label class="form-label" for="field_motif">Motif</label>
           <select class="form-control" name="motif" formControlName="motif" id="field_motif" data-cy="motif">
             <option [ngValue]="null"></option>
@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="form-group">
           <label class="form-label" for="field_typeDemandeur">Type Demandeur</label>
           <select
             class="form-control"
@@ -41,101 +41,51 @@
           >
             <small class="form-text text-danger" *ngIf="editForm.get('typeDemandeur')?.errors?.required"> This field is required. </small>
           </div>
+          <!-- etab -->
+          <div *ngIf="editForm.value.typeDemandeur === 'Etablissement'">
+            <div class="form-group">
+              <label class="form-label" for="field_nomEtab">Nom Etablissement</label>
+              <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let nomEtab of nomEtabValues" [value]="nomEtab">{{ nomEtab }}</option>
+              </select>
+            </div>
+            <div *ngIf="editForm.value.nomEtab === 'AUTRE'">
+              <div class="row mb-3">
+                <label class="form-label" for="field_autreNomEtab">Autre Nom Etablissement</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="autreNomEtab"
+                  id="field_autreNomEtab"
+                  data-cy="autreNomEtab"
+                  formControlName="autreNomEtab"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="form-group">
           <label class="form-label" for="field_nom">Nom</label>
           <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
           <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required"> This field is required. </small>
           </div>
         </div>
-
-        <div class="row mb-3">
+        <div class="form-group">
           <label class="form-label" for="field_prenom">Prenom</label>
           <input type="text" class="form-control" name="prenom" id="field_prenom" data-cy="prenom" formControlName="prenom" />
           <div *ngIf="editForm.get('prenom')!.invalid && (editForm.get('prenom')!.dirty || editForm.get('prenom')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('prenom')?.errors?.required"> This field is required. </small>
           </div>
         </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_nomEtab">Nom Etab</label>
-          <select class="form-control" name="nomEtab" formControlName="nomEtab" id="field_nomEtab" data-cy="nomEtab">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let nomEtab of nomEtabValues" [value]="nomEtab">nomEtab</option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_autreNomEtab">Autre Nom Etab</label>
-          <input
-            type="text"
-            class="form-control"
-            name="autreNomEtab"
-            id="field_autreNomEtab"
-            data-cy="autreNomEtab"
-            formControlName="autreNomEtab"
-          />
-        </div>
-
-        <div class="row mb-3">
+        <div class="form-group">
           <label class="form-label" for="field_email">Email</label>
           <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
           <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required"> This field is required. </small>
           </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_enseignant">Enseignant</label>
-          <select class="form-control" id="field_enseignant" data-cy="enseignant" name="enseignant" formControlName="enseignant">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="
-                enseignantOption.id === editForm.get('enseignant')!.value?.id ? editForm.get('enseignant')!.value : enseignantOption
-              "
-              *ngFor="let enseignantOption of enseignantsSharedCollection; trackBy: trackEnseignantById"
-            >
-              {{ enseignantOption.numCNI }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_apprenant">Apprenant</label>
-          <select class="form-control" id="field_apprenant" data-cy="apprenant" name="apprenant" formControlName="apprenant">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="apprenantOption.id === editForm.get('apprenant')!.value?.id ? editForm.get('apprenant')!.value : apprenantOption"
-              *ngFor="let apprenantOption of apprenantsSharedCollection; trackBy: trackApprenantById"
-            >
-              {{ apprenantOption.telephone }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_etablissement">Etablissement</label>
-          <select
-            class="form-control"
-            id="field_etablissement"
-            data-cy="etablissement"
-            name="etablissement"
-            formControlName="etablissement"
-          >
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="
-                etablissementOption.id === editForm.get('etablissement')!.value?.id
-                  ? editForm.get('etablissement')!.value
-                  : etablissementOption
-              "
-              *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
-            >
-              {{ etablissementOption.nomEtab }}
-            </option>
-          </select>
         </div>
       </div>
 
@@ -145,6 +95,7 @@
         </button>
 
         <button
+          onclick="return alert('votre demande a ete bien prise en compte')"
           type="submit"
           id="save-entity"
           data-cy="entityCreateSaveButton"

@@ -19,7 +19,10 @@ Navbar
   padding: 0.2rem 1rem;
 
   a.nav-link {
-    font-weight: 400;
+    font-weight: 600;
+    font-style: bold;
+    color: white;
+    font-size: 15px;
   }
 }
 
@@ -27,10 +30,15 @@ Navbar
 Logo styles
 ========================================================================== */
 .logo-img {
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 100px;
   display: inline-block;
   vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
-  background-size: contain;
+  background: url('../../../content/images/logo1.png') no-repeat center center;
+  background-size: cover;
 }
+// img{
+//   height: 90px ;
+//   width: 100%;
+
+// }

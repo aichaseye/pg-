@@ -32,30 +32,30 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="matriculeApp"><span>Matricule App</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <th scope="col" jhiSortBy="matriculeApp"><span>Matricule Apprenant</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nom"><span>Nom</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="prenom"><span>Prenom</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="sexe"><span>Sexe</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="telephone"><span>Telephone</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="chefEtablissement.nomPrenom"><span>Chef Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="etablissement.typeEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="telephone"><span>Telephone</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th> -->
+          <!-- <th scope="col" jhiSortBy="chefEtablissement.nomPrenom"><span>Chef Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="etablissement.typeEtab"><span>Etablissement</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let apprenant of apprenants; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/apprenant', apprenant.id, 'view']">{{ apprenant.id }}</a>
-          </td>
+          </td> -->
           <td>{{ apprenant.matriculeApp }}</td>
           <td>{{ apprenant.nom }}</td>
           <td>{{ apprenant.prenom }}</td>
           <td>{{ apprenant.sexe }}</td>
-          <td>{{ apprenant.telephone }}</td>
-          <td>{{ apprenant.email }}</td>
-          <td>
+          <!-- <td>{{ apprenant.telephone }}</td> -->
+          <!-- <td>{{ apprenant.email }}</td> -->
+          <!-- <td>
             <div *ngIf="apprenant.chefEtablissement">
               <a [routerLink]="['/chef-etablissement', apprenant.chefEtablissement?.id, 'view']">{{
                 apprenant.chefEtablissement?.nomPrenom
@@ -66,7 +66,7 @@
             <div *ngIf="apprenant.etablissement">
               <a [routerLink]="['/etablissement', apprenant.etablissement?.id, 'view']">{{ apprenant.etablissement?.typeEtab }}</a>
             </div>
-          </td>
+          </td> -->
           <td class="text-end">
             <div class="btn-group">
               <button

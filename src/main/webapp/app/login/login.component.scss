@@ -1,0 +1,26 @@
+.imgLogin {
+  display: inline-block;
+  width: 700px;
+  height: 600px;
+  background: url('../../content/images/imageLogin.jpg') no-repeat center top;
+  background-size: cover;
+}
+.logo {
+  display: inline-block;
+  width: 220px;
+  height: 200px;
+  background: url('../../content/images/logo1.png') no-repeat center top;
+  background-size: cover;
+  margin-left: 100px;
+}
+.font {
+  height: 600px;
+  background-color: rgba(172, 222, 196, 0.792);
+}
+
+.inscrire {
+  color: rgb(0, 98, 255);
+}
+.forget {
+  color: rgb(255, 72, 0);
+}
