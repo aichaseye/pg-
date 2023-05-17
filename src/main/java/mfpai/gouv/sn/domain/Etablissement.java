@@ -53,8 +53,9 @@ public class Etablissement implements Serializable {
     @Column(name = "autre_dep")
     private String autreDep;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "nom_etab", unique = true)
+    @Column(name = "nom_etab", unique = true, nullable = false)
     private NomEtab nomEtab;
 
     @NotNull

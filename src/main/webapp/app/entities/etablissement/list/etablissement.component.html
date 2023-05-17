@@ -9,6 +9,7 @@
       </button>
 
       <button
+        *jhiHasAnyAuthority="['ROLE_ADMIN']"
         id="jh-create-entity"
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-etablissement"
@@ -75,7 +76,7 @@
               <a [routerLink]="['/bfpa', etablissement.bFPA?.id, 'view']">{{ etablissement.bFPA?.nomPrenom }}</a>
             </div>
           </td> -->
-          <td class="text-end">
+          <td class="text-end" *jhiHasAnyAuthority="['ROLE_ADMIN']">
             <div class="btn-group">
               <button
                 type="submit"

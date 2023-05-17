@@ -149,11 +149,10 @@
                     <option>CFA</option>
                     <option>AUTRE</option>
                   </select>
-                  <div
-                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                  ></div>
+                  <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required"> This field is required. </small>
+                  </div>
                 </div>
-                <!-- <small class="form-text text-danger" *ngIf="editForm.get('region')?.errors?.required"> This field is required. </small> -->
               </div>
 
               <div *ngIf="editForm.value.region === 'THIES'">
@@ -203,9 +202,9 @@
                     <option>LETFP_THIES</option>
                     <option>AUTRE</option>
                   </select>
-                  <div
-                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                  ></div>
+                  <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required"> This field is required. </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="field_codeIA">Code IA</label>
@@ -261,9 +260,11 @@
                       <option>LTAP_SAINT_LOUIS</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
@@ -319,9 +320,11 @@
                       <option>CFP_NDOULO</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -377,9 +380,11 @@
                       <option>CFP_DAHRA</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
@@ -440,9 +445,11 @@
                       <option>LT_FATICK</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -495,9 +502,11 @@
                       <option>CFP_BIRKELANE</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -552,9 +561,11 @@
                       <option>LCAN_KAOLACK</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -611,9 +622,11 @@
                       <option>MBOUMBA</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -671,9 +684,11 @@
                       <option>LT_TAMBA</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -724,9 +739,11 @@
                       <option>LTIMK_KEDOUGOU</option>
                       <option>AUTRE</option>
                     </select>
-                    <div
-                      *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                    ></div>
+                    <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="field_codeIA">Code IA</label>
@@ -784,9 +801,9 @@
                     <option>LT_KOLDA</option>
                     <option>AUTRE</option>
                   </select>
-                  <div
-                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                  ></div>
+                  <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required"> This field is required. </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="field_codeIA">Code IA</label>
@@ -836,9 +853,9 @@
                     <option>CENTRE_REFERENCE_BOUNKILING</option>
                     <option>AUTRE</option>
                   </select>
-                  <div
-                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                  ></div>
+                  <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required"> This field is required. </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="field_codeIA">Code IA</label>
@@ -899,9 +916,9 @@
                     <option>LTAEB_BIGNONA</option>
                     <option>AUTRE</option>
                   </select>
-                  <div
-                    *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)"
-                  ></div>
+                  <div *ngIf="editForm.get('nomEtab')!.invalid && (editForm.get('nomEtab')!.dirty || editForm.get('nomEtab')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('nomEtab')?.errors?.required"> This field is required. </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="field_codeIA">Code IA</label>

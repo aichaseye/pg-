@@ -40,7 +40,7 @@ export class EtablissementUpdateComponent implements OnInit {
     departement: [null, [Validators.required]],
     autreRegion: [],
     autreDep: [],
-    nomEtab: [null, []],
+    nomEtab: [null, [Validators.required]],
     codeIA: [null, [Validators.required]],
     autreCodeIA: [],
     autreNomeEtab: [null, []],

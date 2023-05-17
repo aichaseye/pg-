@@ -52,19 +52,18 @@ public class EtablissementServiceImpl implements EtablissementService {
         } else if (etablissement.getStatut() == StatutEtab.Mixte) {
             statut = "3";
         }
-       
-        String matricule = "ETFP-".concat(statut) .concat(anneCreation);
-        String codeIA="";
-        if(etablissement.getCodeIA()==CodeIA.Autres){
-            codeIA= etablissement.getAutreCodeIA().substring(1, 3);
-        }
-        else if(etablissement.getCodeIA()==CodeIA.Autres && etablissement.getAutreCodeIA()!=null){
-            codeIA= String.valueOf (etablissement.getCodeIA()).substring(1, 3);
-        }
-        else
-        {codeIA= String.valueOf (etablissement.getCodeIA()).substring(1, 3);}
 
-        matricule=matricule.concat(codeIA).concat(order).concat(type);
+        String matricule = "ETFP/".concat(statut).concat(anneCreation);
+        String codeIA = "";
+        if (etablissement.getCodeIA() == CodeIA.Autres) {
+            codeIA = etablissement.getAutreCodeIA().substring(1, 3);
+        } else if (etablissement.getCodeIA() == CodeIA.Autres && etablissement.getAutreCodeIA() != null) {
+            codeIA = String.valueOf(etablissement.getCodeIA()).substring(1, 3);
+        } else {
+            codeIA = String.valueOf(etablissement.getCodeIA()).substring(1, 3);
+        }
+
+        matricule = matricule.concat(codeIA).concat(order).concat(type);
         // ne pouvavt pas etre modifier
         //  if(etablissement.getMatriculeEtab()== null)
         etablissement.setMatriculeEtab(matricule);
@@ -150,6 +149,7 @@ public class EtablissementServiceImpl implements EtablissementService {
         log.debug("Request to delete Etablissement : {}", id);
         etablissementRepository.deleteById(id);
     }
+
     @Override
     public Long findOneByIdDesc() {
         return etablissementRepository.findOneByIdDesc();

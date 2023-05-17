@@ -33,15 +33,14 @@ public class MatiereServiceImpl implements MatiereService {
         log.debug("Request to save Matiere : {}", matiere);
 
         // le code de l'IA
-        String codeIA="";
-        if(matiere.getCodeIA()==CodeIA.Autres){
-            codeIA= matiere.getAutreCodeIA().substring(1,3);
+        String codeIA = "";
+        if (matiere.getCodeIA() == CodeIA.Autres) {
+            codeIA = matiere.getAutreCodeIA().substring(1, 3);
+        } else if (matiere.getCodeIA() == CodeIA.Autres && matiere.getAutreCodeIA() != null) {
+            codeIA = String.valueOf(matiere.getCodeIA()).substring(1, 3);
+        } else {
+            codeIA = String.valueOf(matiere.getCodeIA()).substring(1, 3);
         }
-        else if(matiere.getCodeIA()==CodeIA.Autres && matiere.getAutreCodeIA()!=null){
-            codeIA= String.valueOf (matiere.getCodeIA()).substring(1,3);
-        }
-        else
-        {codeIA= String.valueOf (matiere.getCodeIA()).substring(1, 3);}
         // ordre
         Long last_insert = matiereRepository.findOneByIdDesc();
         if (last_insert == null) {
@@ -49,42 +48,35 @@ public class MatiereServiceImpl implements MatiereService {
         }
 
         String order = getOrder(String.valueOf(last_insert));
-        String matricule=codeIA + order 
-            + String.valueOf(matiere.getAnneeAffectation()).substring(2) +"FTP" ;
+        String matricule = codeIA + order + String.valueOf(matiere.getAnneeAffectation()).substring(2) + "FTP";
+        TypeStructure structure;
+        if (matiere.getTypeStructure() == TypeStructure.Autre) {
+            structure = matiere.getTypeStructure();
+        } else if (matiere.getTypeStructure() == TypeStructure.Autre && matiere.getAutreStructure() != null) {
+            structure = matiere.getTypeStructure();
+        } else {
+            structure = matiere.getTypeStructure();
+        }
 
-            TypeStructure structure;
-            if(matiere.getTypeStructure()==TypeStructure.Autre){
-                structure= matiere.getTypeStructure();
-            }
-            else if(matiere.getTypeStructure()==TypeStructure.Autre && matiere.getAutreStructure()!=null){
-                structure= matiere.getTypeStructure();
-            }
-            else
-            {structure= matiere.getTypeStructure();}
+        matricule = matricule + "/" + structure;
 
-         matricule = matricule +"/" + structure;
-            
-        matiere.setMatriculeMatiere(matricule);    
+        matiere.setMatriculeMatiere(matricule);
         return matiereRepository.save(matiere);
     }
 
-    public String getOrder(String id) { 
+    public String getOrder(String id) {
         String order;
 
         if (id.length() == 1) {
             order = "0000" + id;
-
         } else if (id.length() == 2) {
             order = "000" + id;
-
         } else if (id.length() == 3) {
-            order ="00"+ id;
+            order = "00" + id;
         } else if (id.length() == 4) {
-            order ="0"+ id;
-        
+            order = "0" + id;
         } else if (id.length() == 5) {
             order = id;
-
         } else {
             order = id.substring(0, 5);
         }
