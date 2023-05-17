@@ -49,6 +49,7 @@ public class MatiereServiceImpl implements MatiereService {
 
         String order = getOrder(String.valueOf(last_insert));
         String matricule = codeIA + order + String.valueOf(matiere.getAnneeAffectation()).substring(2) + "FTP";
+
         TypeStructure structure;
         if (matiere.getTypeStructure() == TypeStructure.Autre) {
             structure = matiere.getTypeStructure();
