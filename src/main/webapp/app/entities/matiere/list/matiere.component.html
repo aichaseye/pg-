@@ -35,7 +35,7 @@
           <!-- <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="matriculeMatiere"><span>Matricule Matiere</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nomMatiere"><span>Nom Matiere</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="reference"><span>Reference</span> <fa-icon icon="sort"></fa-icon></th>
+          <!-- <th scope="col" jhiSortBy="reference"><span>Reference</span> <fa-icon icon="sort"></fa-icon></th> -->
           <!-- <th scope="col" jhiSortBy="image"><span>Image</span> <fa-icon icon="sort"></fa-icon></th> -->
           <th scope="col" jhiSortBy="region"><span>Region</span> <fa-icon icon="sort"></fa-icon></th>
           <!-- <th scope="col" jhiSortBy="autreRegion"><span>Autre Region</span> <fa-icon icon="sort"></fa-icon></th> -->
@@ -59,11 +59,11 @@
           </td> -->
           <td>{{ matiere.matriculeMatiere }}</td>
           <td>{{ matiere.nomMatiere }}</td>
-          <td>{{ matiere.reference }}</td>
-          <td>
+          <!-- <td>{{ matiere.reference }}</td> -->
+          <!-- <td>
             <a *ngIf="matiere.image" (click)="openFile(matiere.image, matiere.imageContentType)">open</a>
             <span *ngIf="matiere.image">{{ matiere.imageContentType }}, {{ byteSize(matiere.image) }}</span>
-          </td>
+          </td> -->
           <td>{{ matiere.region }}</td>
           <!-- <td>{{ matiere.autreRegion }}</td> -->
           <td>{{ matiere.departement }}</td>
@@ -78,7 +78,7 @@
               <a [routerLink]="['/referant', matiere.referant?.id, 'view']">{{ matiere.referant?.nomPrenom }}</a>
             </div>
           </td> -->
-          <td>
+          <!-- <td>
             <div *ngIf="matiere.comptableMatiere">
               <a [routerLink]="['/comptable-matiere', matiere.comptableMatiere?.id, 'view']">{{ matiere.comptableMatiere?.nomPrenom }}</a>
             </div>
@@ -87,7 +87,7 @@
             <div *ngIf="matiere.etablissement">
               <a [routerLink]="['/etablissement', matiere.etablissement?.id, 'view']">{{ matiere.etablissement?.nomEtab }}</a>
             </div>
-          </td>
+          </td> -->
           <td class="text-end">
             <div class="btn-group">
               <button

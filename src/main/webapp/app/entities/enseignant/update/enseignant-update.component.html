@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-enseignant-heading" data-cy="EnseignantCreateUpdateHeading">Create or edit a Enseignant</h2>
+      <h2 id="jhi-enseignant-heading" data-cy="EnseignantCreateUpdateHeading">Modificationt</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>
@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group" [hidden]="editForm.get('matriculeEns')!.value == null">
-              <label class="form-label" for="field_matriculeEns">Matricule Ens</label>
+              <label class="form-label" for="field_matriculeEns">Matricule Enseignent</label>
               <input
                 type="text"
                 class="form-control"
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="field_numCNI">Num CNI</label>
+              <label class="form-label" for="field_numCNI">Numéro CNI</label>
               <input type="number" class="form-control" name="numCNI" id="field_numCNI" data-cy="numCNI" formControlName="numCNI" />
               <div *ngIf="editForm.get('numCNI')!.invalid && (editForm.get('numCNI')!.dirty || editForm.get('numCNI')!.touched)">
                 <small class="form-text text-danger" *ngIf="editForm.get('numCNI')?.errors?.required"> This field is required. </small>
@@ -92,7 +92,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label class="form-label" for="field_region">Region</label>
+              <label class="form-label" for="field_region">Region d'affectation</label>
               <select class="form-control" name="region" formControlName="region" id="field_region" data-cy="region">
                 <option [ngValue]="null"></option>
                 <option *ngFor="let nomReg of nomRegValues" [value]="nomReg">{{ nomReg }}</option>
